@@ -6,7 +6,8 @@ Reach $500/day net revenue by Day 30, $1,000/day by Day 60, via a done-for-you r
 ## Current State
 - Day 0 complete: niche locked, offer repositioned (see /docs/day0-brief.md + /docs/research-addendum.md)
 - Offer: $500 Renewal Recovery Sprint → $1,000–1,500/mo operator retainer
-- Pending: domains, inboxes, Stripe, landing page, list build, launch
+- Day 1 (2026-07-12): brand locked = **AgencyRetain**; research done (domains, infra pricing, competitor audit — see /research); landing page v1 built (/site/index.html, needs Stripe + Cal.com links + address); infra picks: Porkbun domains, Primeforge inboxes, Smartlead Base
+- Pending: Luke purchases (domains, inboxes, Smartlead, Stripe, Cal.com), DNS auth, hosting, list build, launch
 
 ## Operating Rules
 1. **Data over hypotheticals.** Every kill/scale decision cites a metric. Log decisions in /docs/decision-log.md with date, data, and rationale.
