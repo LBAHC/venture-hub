@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Retention Leakage Calculator — AgencyRetain</title>
+<meta name="description" content="Enter your book size and retention rate. See what policy leakage costs your independent agency in real dollars — using public industry benchmarks, math shown.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf7f0; --paper-deep:#f3eee2; --ink:#1c1a16; --ink-soft:#57534a;
+  --ledger:#1e6b42; --ledger-deep:#175636; --rule:#d8d2c2; --rule-dark:#1c1a16;
+  --red:#9c3a2e;
+  --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:var(--ledger);color:var(--paper)}
+.wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
+.label{font-family:var(--mono);font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ledger)}
+.rule-double{border:none;border-top:3px double var(--rule-dark)}
+header{padding:1.4rem 0}
+.masthead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.wordmark{font-size:1.3rem;font-weight:600}
+.wordmark span{color:var(--ledger)}
+.wordmark a{color:inherit;text-decoration:none}
+.tagline{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+@media(max-width:480px){.tagline{display:none}}
+
+.hero{padding:3rem 0 2rem}
+h1{font-size:clamp(1.9rem,5.5vw,2.8rem);font-weight:500;line-height:1.15;letter-spacing:-.02em;margin:.9rem 0 1rem}
+h1 em{font-style:italic;color:var(--ledger)}
+.lede{color:var(--ink-soft);max-width:36rem}
+
+/* form */
+.calc{background:#fff;border:1px solid var(--ink);box-shadow:6px 6px 0 var(--paper-deep),6px 6px 0 1px var(--rule);padding:1.8rem 1.5rem;margin:2rem 0}
+.field{margin-bottom:1.6rem}
+.field label{display:block;font-weight:600;font-size:1.05rem;margin-bottom:.2rem}
+.field .hint{font-size:.92rem;color:var(--ink-soft);font-style:italic;margin-bottom:.55rem}
+.field input[type=range]{width:100%;accent-color:var(--ledger)}
+.field input[type=number]{font-family:var(--mono);font-size:1.1rem;padding:.55rem .7rem;border:1px solid var(--ink);background:var(--paper);width:11rem;max-width:100%}
+.range-row{display:flex;align-items:center;gap:1rem}
+.range-val{font-family:var(--mono);font-weight:600;font-size:1.2rem;color:var(--ledger);min-width:4.2rem;text-align:right}
+
+/* results */
+.results{border-top:3px double var(--rule-dark);margin-top:.5rem;padding-top:1.4rem}
+.res-row{display:flex;justify-content:space-between;gap:1rem;align-items:baseline;padding:.6rem 0;border-bottom:1px dotted var(--rule)}
+.res-row .k{font-size:1rem}
+.res-row .v{font-family:var(--mono);font-weight:600;font-size:1.15rem;white-space:nowrap}
+.res-row .v.loss{color:var(--red)}
+.res-row .v.gain{color:var(--ledger)}
+.res-big{margin:1.4rem 0 .4rem;padding:1.2rem 1.3rem;background:var(--paper-deep);border-left:3px solid var(--red)}
+.res-big .n{font-family:var(--mono);font-weight:600;font-size:clamp(1.7rem,5vw,2.3rem);color:var(--red);display:block}
+.res-big .t{font-size:1rem;color:var(--ink-soft)}
+.method{font-size:.92rem;color:var(--ink-soft);font-style:italic;margin-top:1.2rem}
+.method a{color:var(--ink-soft)}
+
+/* cta */
+.cta-block{padding:2.5rem 0 4rem}
+.btn{display:inline-block;font-family:var(--mono);font-size:.95rem;font-weight:600;text-decoration:none;color:var(--paper);background:var(--ledger);padding:1rem 1.6rem;border:2px solid var(--ledger-deep);box-shadow:4px 4px 0 var(--ink);transition:transform .12s ease,box-shadow .12s ease}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.cta-alt{font-size:1.02rem;color:var(--ink-soft);margin-top:.9rem}
+.cta-alt a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--ledger)}
+footer{padding:2rem 0 3rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="masthead">
+    <div class="wordmark"><a href="index.html">Agency<span>Retain</span></a></div>
+    <div class="tagline">Operators, not software</div>
+  </div>
+</header>
+<div class="wrap"><hr class="rule-double"></div>
+
+<section class="hero wrap">
+  <span class="label">Free tool · math shown · nothing to sign up for</span>
+  <h1>What is retention leakage costing <em>your</em> book?</h1>
+  <p class="lede">Three numbers from your agency. Public industry benchmarks. The dollars, computed in front of you — no email gate, no "book a demo to see results."</p>
+</section>
+
+<div class="wrap">
+  <div class="calc">
+    <div class="field">
+      <label for="policies">Policies in force</label>
+      <p class="hint">Rough count is fine — personal + commercial lines.</p>
+      <input type="number" id="policies" value="2000" min="100" max="50000" step="100">
+    </div>
+
+    <div class="field">
+      <label for="commission">Average annual commission per policy</label>
+      <p class="hint">Not sure? $150–200 is typical for a mixed personal-lines book; commercial runs higher.</p>
+      <div class="range-row">
+        <input type="range" id="commission" value="175" min="50" max="600" step="5">
+        <span class="range-val" id="commissionVal">$175</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="retention">Your current retention rate</label>
+      <p class="hint">Industry average is ~84%. Top-quartile independents run 93–95%. If you don't track it, start at the average.</p>
+      <div class="range-row">
+        <input type="range" id="retention" value="84" min="70" max="97" step="0.5">
+        <span class="range-val" id="retentionVal">84%</span>
+      </div>
+    </div>
+
+    <div class="results">
+      <span class="label">Your leakage, annualized</span>
+      <div class="res-big">
+        <span class="n" id="dollarLoss">$—</span>
+        <span class="t">commission revenue walking out per year vs. a 93% top-quartile agency — <strong id="policyLoss">—</strong> policies you already won, lost again.</span>
+      </div>
+      <div class="res-row"><span class="k">Policies lost per year at your rate</span><span class="v loss" id="lostAtYours">—</span></div>
+      <div class="res-row"><span class="k">Policies a 93% agency would lose</span><span class="v" id="lostAtBench">—</span></div>
+      <div class="res-row"><span class="k">5-year cumulative gap (compounding)</span><span class="v loss" id="fiveYear">—</span></div>
+      <div class="res-row"><span class="k">What closing just 1 point is worth</span><span class="v gain" id="onePoint">—</span></div>
+      <p class="method">Method, in the open: annual leakage = policies × (93% − your rate) × avg commission. Five-year figure compounds both books forward at their respective retention rates, new business held equal. Benchmarks: ~84% industry average and 93–95% top-quartile are published figures (PIA National; Agency Performance Partners). Your real number needs your real book — that's what the sprint computes.</p>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <span class="label">The next step</span>
+    <h1 style="font-size:clamp(1.5rem,4vw,2rem);margin:.7rem 0 1.4rem">This math used benchmarks. Your book has actual numbers.</h1>
+    <!-- data-todo: replace href with Stripe payment link -->
+    <a class="btn" href="index.html#pricing" data-todo="stripe-link">Get the real math — $500 Sprint&nbsp;→</a>
+    <p class="cta-alt">14 days, one segment of your book, a report in dollars. Or <a href="index.html#pricing" data-todo="calcom-link">book a 15-min fit call</a> first.</p>
+  </div>
+</div>
+
+<footer class="wrap">
+  <p>AgencyRetain · <!-- TODO: address -->[address] · Not affiliated with any carrier.</p>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+const BENCH=0.93;
+function calc(){
+  const P=+$('policies').value||0, C=+$('commission').value, r=+$('retention').value/100;
+  $('commissionVal').textContent='$'+C;
+  $('retentionVal').textContent=(r*100).toFixed(1).replace('.0','')+'%';
+  const lostYours=P*(1-r), lostBench=P*(1-BENCH);
+  const gapPolicies=Math.max(0,lostYours-lostBench);
+  const gapDollars=gapPolicies*C;
+  // 5-yr compounding: run both books forward, same new business (zeroed out — it cancels)
+  let bookYours=P, bookBench=P, cum=0;
+  for(let y=0;y<5;y++){ bookYours*=r; bookBench*=BENCH; cum+=(bookBench-bookYours)*C; }
+  const onePoint=P*0.01*C;
+  $('dollarLoss').textContent=r>=BENCH?'$0':fmt(gapDollars);
+  $('policyLoss').textContent=Math.round(gapPolicies).toLocaleString();
+  $('lostAtYours').textContent=Math.round(lostYours).toLocaleString();
+  $('lostAtBench').textContent=Math.round(lostBench).toLocaleString();
+  $('fiveYear').textContent=r>=BENCH?'$0':fmt(cum);
+  $('onePoint').textContent=fmt(onePoint)+'/yr';
+}
+['policies','commission','retention'].forEach(id=>$(id).addEventListener('input',calc));
+calc();
+</script>
+</body>
+</html>
