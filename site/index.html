@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AgencyRetain — Done-for-you revenue recovery for independent insurance agencies</title>
 <meta name="description" content="We run quote follow-up, renewal, and cross-sell campaigns for independent P&C agencies — on your existing stack — and report results in dollars recovered. $500 sprint, 14 days.">
+<meta property="og:title" content="AgencyRetain — operators, not software">
+<meta property="og:description" content="Done-for-you revenue recovery for independent P&C agencies. $500 sprint, 14 days, results in dollars.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23faf7f0'/%3E%3Cpath d='M6 26 16 5l10 21h-4.6L16 14.2 10.6 26z' fill='%231e6b42'/%3E%3Crect x='5' y='28' width='22' height='2' fill='%231c1a16'/%3E%3C/svg%3E">
 <!-- TODO before launch: set STRIPE sprint payment link + CAL.COM booking link (search for data-todo) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,8 +66,12 @@ header{padding:1.4rem 0}
 .masthead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
 .wordmark{font-size:1.3rem;font-weight:600;letter-spacing:-.01em}
 .wordmark span{color:var(--ledger)}
+.mast-right{display:flex;align-items:baseline;gap:1.4rem}
 .tagline{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+.tool-link{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ledger);text-decoration:none;border-bottom:1px solid var(--ledger)}
+.tool-link:hover{color:var(--ledger-deep)}
 @media(max-width:480px){.tagline{display:none}}
+.money,.amt,.report{font-variant-numeric:tabular-nums}
 
 /* ── hero ───────────────────────────────────── */
 .hero{padding:3.5rem 0 4rem}
@@ -218,7 +226,10 @@ footer a{color:var(--ink-soft)}
 <header class="wrap">
   <div class="masthead">
     <div class="wordmark">Agency<span>Retain</span></div>
-    <div class="tagline">Operators, not software</div>
+    <div class="mast-right">
+      <div class="tagline">Operators, not software</div>
+      <a class="tool-link" href="calculator.html">Free: leakage calculator</a>
+    </div>
   </div>
 </header>
 <div class="wrap"><hr class="rule-double"></div>
@@ -247,6 +258,7 @@ footer a{color:var(--ink-soft)}
     <li><span class="n">03</span><span>Quotes without a follow-up sequence quietly buy from whoever calls in week three.</span></li>
     <li><span class="n">04</span><span>And the tool you bought to fix this? Industry data says most agencies use a fraction of it. <strong>The gap isn't software. It's operation.</strong></span></li>
   </ul>
+  <p style="margin-top:1.3rem">Want this math on your own book size? <a href="calculator.html" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--ledger)">Run the free leakage calculator</a> — 30 seconds, no email gate.</p>
 </section>
 
 <!-- ═══ WHAT WE DO ═══ -->
