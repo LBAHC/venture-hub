@@ -1,3 +1,4 @@
 leads/*.csv
 leads/*.xlsx
 .env
+data/
