@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What 5,408 policyholder reviews reveal about renewals — AgencyRetain</title>
+<meta name="description" content="We analyzed 5,408 Google reviews of 211 independent insurance agencies. The five-star agencies are all doing the same thing — and it isn't software.">
+<meta property="og:title" content="We analyzed 5,408 policyholder reviews of 211 independent agencies">
+<meta property="og:description" content="The ones getting five stars are all doing the same thing. It isn't software.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23faf7f0'/%3E%3Cpath d='M6 26 16 5l10 21h-4.6L16 14.2 10.6 26z' fill='%231e6b42'/%3E%3Crect x='5' y='28' width='22' height='2' fill='%231c1a16'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#faf6ec;--paper-deep:#f1ead9;--card:#fffdf7;--ink:#191712;--ink-soft:#5c564a;
+  --ledger:#1e6b42;--ledger-deep:#14522f;--ledger-tint:#e7efe6;--rule:#d9d1bc;--rule-dark:#191712;
+  --display:'Fraunces',Georgia,serif;--serif:'Newsreader',Georgia,serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+  --pad:clamp(1.55rem,6vw,2.2rem);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--paper);
+  background-image:radial-gradient(ellipse 120% 80% at 50% -10%, #fffbf2 0%, var(--paper) 55%);
+  color:var(--ink);font-family:var(--serif);
+  font-size:clamp(1.08rem,1rem + .35vw,1.2rem);line-height:1.72;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+::selection{background:var(--ledger);color:var(--paper)}
+.wrap{max-width:40rem;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.label{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ledger)}
+.rule-double{border:none;border-top:3px double var(--rule-dark)}
+
+header{padding:clamp(1.2rem,4vw,1.8rem) 0}
+.masthead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.wordmark{font-family:var(--display);font-size:clamp(1.25rem,4.5vw,1.5rem);font-weight:600}
+.wordmark a{color:inherit;text-decoration:none}
+.wordmark span{color:var(--ledger);font-style:italic}
+.back{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);text-decoration:none}
+.back:hover{color:var(--ledger)}
+
+.masthead-note{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* article head */
+.head{padding:clamp(3rem,8vw,4.5rem) 0 clamp(2rem,5vw,3rem)}
+h1{
+  font-family:var(--display);font-size:clamp(1.9rem,1.1rem + 4.5vw,3.1rem);
+  font-weight:500;line-height:1.12;letter-spacing:-.02em;margin:1rem 0 1.2rem;text-wrap:balance;
+}
+.standfirst{font-size:clamp(1.12rem,1rem + .6vw,1.3rem);color:var(--ink-soft);font-style:italic}
+.byline{margin-top:1.6rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* stat band */
+.stats{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1px;
+  background:var(--rule);border-top:3px double var(--rule-dark);border-bottom:1px solid var(--rule);
+  margin:2.2rem 0;
+}
+.stat{background:var(--paper);padding:1.2rem 1rem}
+.stat .n{font-family:var(--display);font-size:clamp(1.5rem,4vw,2rem);font-weight:600;color:var(--ledger);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat .t{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:.3rem;line-height:1.6}
+
+article{padding-bottom:2rem}
+h2{
+  font-family:var(--display);font-size:clamp(1.4rem,1.1rem + 1.6vw,1.85rem);
+  font-weight:600;line-height:1.2;margin:2.8rem 0 1rem;text-wrap:balance;
+}
+h2 .fn{display:block;font-family:var(--mono);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ledger);margin-bottom:.5rem}
+p+p{margin-top:1rem}
+strong{font-weight:600}
+
+blockquote{
+  margin:1.5rem 0;padding:1.1rem 1.4rem;
+  background:var(--card);border-left:3px solid var(--ledger);border-radius:0 2px 2px 0;
+  box-shadow:0 1px 0 var(--rule);
+  font-size:1.05rem;
+}
+blockquote .att{display:block;margin-top:.6rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-style:normal}
+blockquote.neg{border-left-color:#9c3a2e}
+
+.pull{
+  font-family:var(--display);font-style:italic;font-size:clamp(1.3rem,1.1rem + 1.2vw,1.6rem);
+  line-height:1.35;color:var(--ledger-deep);margin:2.2rem 0;padding:1.4rem 0;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);text-align:center;text-wrap:balance;
+}
+
+/* method */
+.method{
+  margin-top:3rem;background:var(--card);border:1px solid var(--rule);border-top:3px double var(--rule-dark);
+  padding:clamp(1.5rem,4.5vw,2rem) clamp(1.3rem,4vw,1.8rem);font-size:.98rem;color:var(--ink-soft);
+}
+.method h3{font-family:var(--display);font-size:1.15rem;color:var(--ink);margin-bottom:.8rem}
+.method li{margin:.5rem 0 .5rem 1.1rem}
+
+/* cta */
+.cta{background:var(--ink);color:var(--paper);padding:clamp(3.5rem,9vw,5rem) 0;margin-top:3.5rem}
+.cta .label{color:#8fd3ae}
+.cta h2{color:var(--paper);margin-top:.8rem}
+.cta p{color:#b9b3a4}
+.btn{
+  display:inline-block;font-family:var(--mono);font-size:clamp(.88rem,.8rem + .3vw,.98rem);font-weight:600;letter-spacing:.03em;
+  text-decoration:none;color:var(--paper);background:var(--ledger);
+  padding:1.05rem 1.7rem;border:2px solid var(--ledger-deep);border-radius:2px;
+  box-shadow:5px 5px 0 rgba(143,211,174,.35);
+  transition:transform .13s ease,box-shadow .13s ease;
+  margin-top:1.6rem;
+}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 rgba(143,211,174,.35)}
+.cta-alt{margin-top:1rem;font-size:1rem}
+.cta-alt a{color:var(--paper);text-decoration:underline;text-underline-offset:4px;text-decoration-color:#8fd3ae}
+
+footer{padding:2.2rem 0 3rem;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);letter-spacing:.04em;line-height:2}
+footer a{color:var(--ink-soft)}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="masthead">
+    <div class="wordmark"><a href="index.html">Agency<span>Retain</span></a></div>
+    <a class="back" href="index.html">← agencyretain.com</a>
+  </div>
+</header>
+<div class="wrap"><hr class="rule-double"></div>
+
+<div class="head wrap">
+  <span class="label">Research · July 2026</span>
+  <h1>We analyzed 5,408 policyholder reviews of 211 independent insurance agencies. The ones getting five stars are all doing the same thing.</h1>
+  <p class="standfirst">And it isn't software. Method and caveats at the end — including the ones that cut against us.</p>
+  <p class="byline">AgencyRetain · quote-audited against sources</p>
+</div>
+
+<div class="wrap">
+  <div class="stats">
+    <div class="stat"><div class="n">5,408</div><div class="t">Google reviews collected</div></div>
+    <div class="stat"><div class="n">211</div><div class="t">independent agencies · 10 metros</div></div>
+    <div class="stat"><div class="n">121</div><div class="t">reviews praising "shopped &amp; saved me"</div></div>
+    <div class="stat"><div class="n">98%</div><div class="t">of those are 4–5 star reviews</div></div>
+  </div>
+</div>
+
+<article class="wrap">
+  <p>Everyone in this industry repeats the same retention statistics: the average independent agency retains ~84% of policies; the best run 93–95%. What those numbers don't tell you is <em>why</em> — so we went looking in the one place policyholders speak for themselves: public reviews.</p>
+  <p>We collected 5,408 Google reviews across 211 independent P&amp;C agencies in 10 metros (Tampa, Orlando, Houston, Dallas, San Antonio, New Orleans, Oklahoma City, Denver, Columbus, Pittsburgh), 4,366 of them with written text, plus a separate 42-quote corpus from BBB profiles of carriers and insurtechs for contrast.</p>
+
+  <h2><span class="fn">Finding 1</span>When policyholders praise an independent agency, they're praising follow-up</h2>
+  <p>The reviews are overwhelmingly positive (4.75★ average — more on that bias below). But the praise is <em>specific</em>. The single most common concrete theme — <strong>121 reviews, 98% of them 4–5 stars</strong> — is some version of "they shopped the market for me and saved me money":</p>
+  <blockquote>"Insurance rates are always going up in Colorado and Chris got us the best rates, even lowering our rate on an existing policy with a re-score."<span class="att">Longevity Insurance Brokers · Denver · ★★★★★</span></blockquote>
+  <blockquote>"…saved me literally $2700 a YEAR that my other insurance could not."<span class="att">Hartwig Moss Insurance Agency · New Orleans · ★★★★★</span></blockquote>
+  <blockquote>"They call me to make sure I am up to date with my account and if there are any changes needed. I never have to worry about my account with them."<span class="att">KTS Insurance Agency · New Orleans · ★★★★★</span></blockquote>
+  <p>And the purest version of the renewal play, working exactly as designed:</p>
+  <blockquote>"Phu had reached to me last year asking to put together a quote for me. At that time, it wasn't much of a cost difference… but he asked if he could reach out after I received my renewal notices. He called again, and the new quotes he put together would save me a couple thousand dollars as my current insurance was going to have a large rate hike at renewal."<span class="att">Best Value Insurance of Oklahoma · OKC metro · ★★★★★</span></blockquote>
+  <p>That is a producer diarizing a renewal date and calling on it. It reads like magic to the customer. It's a calendar entry.</p>
+
+  <h2><span class="fn">Finding 2</span>When policyholders turn on an independent agency, it's almost never the price. It's the silence.</h2>
+  <p>Rate complaints exist, but read the negative reviews closely and the wound is nearly always a <em>service failure wrapped around</em> the price event:</p>
+  <blockquote class="neg">"Never received a call back about a quote for insurance."<span class="att">agency name withheld · San Antonio metro · ★</span></blockquote>
+  <blockquote class="neg">"I was never able to get my agent to return my numerous calls in response [to] an email asking me to call her. I sent 2 emails… I finally went in person."<span class="att">agency name withheld · New Orleans metro · ★</span></blockquote>
+  <blockquote class="neg">"When I asked the agent about the rate increase when I turned 30, they just said 'OH yeah it just goes up sometimes.'"<span class="att">agency name withheld · Pittsburgh metro · ★</span></blockquote>
+  <p>Of the negative reviews in our corpus, the recurring concrete failures are unreturned quote requests, promised follow-ups that never came, and rate increases nobody explained. Policyholders will forgive a premium increase they understand. What they review-bomb is feeling unwatched.</p>
+
+  <h2><span class="fn">Finding 3</span>The renewal rage lives at carriers and insurtechs. That's the independent channel's opening.</h2>
+  <p>Our separate BBB corpus (carriers, MGAs, direct-to-consumer insurtechs) reads like a different planet: renewal rate-shock in 19 of 42 excerpts, no-notice auto-renewals, escrow surprises, "teaser rate then triple at renewal" patterns described in nearly identical language by different reviewers of the same insurtech.</p>
+  <blockquote class="neg">"They lure you in with great low rates then nearly triple that within a couple of years, even if you have NO claims!"<span class="att">insurtech · BBB · 2024 · ★</span></blockquote>
+  <blockquote class="neg">"We cancelled our policy in April 2025. They 'auto renewed' it in May 2025 without any notice and then charged the card on file for 4 months."<span class="att">insurtech · BBB · 2025 · ★</span></blockquote>
+  <p>Policyholders blame <strong>carriers</strong> for price. They credit — or blame — <strong>agencies</strong> for attention.</p>
+  <p class="pull">The entire value proposition of the independent channel, in customers' own words: someone is watching my rates for me.</p>
+  <p>When that's true, it produces the 121 five-star "shopped and saved me" reviews above. When it isn't, the customer either writes the "never called me back" review — or, far more often, does something worse:</p>
+
+  <h2><span class="fn">Finding 4</span>The leakage doesn't leave reviews</h2>
+  <p>Here's the honest limit of review data, and it's also the point: satisfied stayers write reviews (often because the agency asked them to — that's the 4.75★ average). <strong>Quiet leavers write nothing.</strong> The gap between 84% average retention and 93% top-quartile retention — on a 2,000-policy book, roughly 180 policies a year — appears nowhere in any review feed. It doesn't complain. It just shops at renewal, finds someone who called first, and leaves.</p>
+  <p>The five-star agencies in this dataset aren't running anything exotic. Diarize the renewal. Call before the notice lands. Answer the quote request. Explain the increase. The difference between the agencies collecting "saved me $2,700" reviews and the ones collecting "never called me back" reviews is not talent or tooling — most agencies already own software that can schedule every one of those touches. <strong>It's whether anyone actually runs the process, every week, on every policy.</strong></p>
+  <p>That's the whole finding. Follow-up is the product. Somebody has to operate it.</p>
+
+  <div class="method">
+    <h3>Method &amp; caveats</h3>
+    <ul>
+      <li><strong>Sample:</strong> 5,408 Google reviews (4,366 with text) from 211 independent agencies across 10 metros, collected July 2026 via the Google Maps public interface; agencies selected by search prominence ("independent insurance agency {metro}"), captive-brand offices excluded; up to 30 most recent reviews per agency. BBB corpus: 42 excerpts, 12 companies, collected separately.</li>
+      <li><strong>Counting:</strong> themes tagged by keyword patterns and hand-checked on the quoted examples; "shopped/saved" = 121 matches, 119 in 4–5★ reviews. Negative-review counts: 253 reviews at 1–2★ (5.8% of text reviews); one in six of those (16.6%) mention rate/premium/price/renewal terms.</li>
+      <li><strong>Biases that cut against us, stated plainly:</strong> (1) Google reviews of agencies skew positive because agencies solicit them from happy clients — this is a survivorship sample, which is why Finding 4 is the real conclusion, not a footnote. (2) Prominent-in-search agencies are likelier to be well-run; the average agency's review feed is thinner and likely less flattering. (3) Keyword tagging undercounts themes phrased unusually. (4) We sell follow-up operations; discount our interpretation accordingly and check the quotes — every one is public, and every quote and statistic in this piece was audited against its source before publication.</li>
+    </ul>
+  </div>
+</article>
+
+<div class="cta">
+  <div class="wrap">
+    <span class="label">Why we did this</span>
+    <h2>AgencyRetain runs the follow-up. You keep the five-star reviews.</h2>
+    <p>We operate renewal and follow-up campaigns for independent P&amp;C agencies — on your existing stack — and report results in dollars. Want the leakage math on your own book? <a href="calculator.html" style="color:var(--paper);text-decoration:underline;text-decoration-color:#8fd3ae;text-underline-offset:4px">Run the free calculator</a>.</p>
+    <!-- data-todo: replace href with Stripe payment link -->
+    <a class="btn" href="index.html#pricing" data-todo="stripe-link">Start the $500 Sprint&nbsp;→</a>
+    <p class="cta-alt">or <a href="index.html#pricing" data-todo="calcom-link">book a 15-minute fit call</a></p>
+  </div>
+</div>
+
+<footer class="wrap">
+  <p>AgencyRetain · <!-- TODO: physical address -->[address]</p>
+  <p><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · Not affiliated with any carrier.</p>
+</footer>
+
+</body>
+</html>
