@@ -12,449 +12,385 @@
 <!-- TODO before launch: set STRIPE sprint payment link + CAL.COM booking link (search for data-todo) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#faf6ec;
-  --paper-deep:#f1ead9;
-  --card:#fffdf7;
-  --ink:#191712;
-  --ink-soft:#5c564a;
-  --ledger:#1e6b42;
-  --ledger-deep:#14522f;
-  --ledger-tint:#e7efe6;
-  --rule:#d9d1bc;
-  --rule-dark:#191712;
+  --paper:#faf7ef;
+  --card:#fffefa;
+  --ink:#1a1813;
+  --ink-2:#4e4a40;      /* secondary text — AA on paper */
+  --green:#175d3a;      /* action + money only */
+  --green-dark:#0f4229;
+  --rule:#d9d2c0;
+  --rule-2:#1a1813;
   --display:'Fraunces',Georgia,serif;
   --serif:'Newsreader',Georgia,serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
-  --pad:clamp(1.55rem,6vw,2.2rem);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   background:var(--paper);
-  background-image:radial-gradient(ellipse 120% 80% at 50% -10%, #fffbf2 0%, var(--paper) 55%);
   color:var(--ink);
   font-family:var(--serif);
-  font-size:clamp(1.06rem,1rem + .3vw,1.17rem);
-  line-height:1.65;
+  font-size:clamp(1.125rem,1.05rem + .3vw,1.1875rem); /* 18-19px floor */
+  line-height:1.62;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
 }
-/* paper grain */
-body::after{
-  content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.35;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-::selection{background:var(--ledger);color:var(--paper)}
-.wrap{max-width:43rem;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+::selection{background:var(--green);color:var(--paper)}
 
-/* ── type & furniture ─────────────────────── */
-.label{
-  font-family:var(--mono);font-size:.7rem;font-weight:600;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--ledger);
-  display:flex;align-items:center;gap:.8rem;
+/* ── document grid: margin column + text column ── */
+.sheet{max-width:59rem;margin:0 auto;padding:0 clamp(1.4rem,5vw,2.5rem)}
+.row{display:grid;grid-template-columns:1fr;column-gap:3.5rem}
+@media(min-width:900px){.row{grid-template-columns:10.5rem minmax(0,38rem)}}
+.mn{ /* margin note */
+  font-family:var(--mono);font-size:.875rem;font-weight:500;
+  color:var(--ink-2);letter-spacing:.02em;line-height:1.5;
+  padding-top:.55em;
 }
-.label::after{content:"";flex:1;height:1px;background:var(--rule)}
-.rule-double{border:none;border-top:3px double var(--rule-dark)}
-.rule-thin{border:none;border-top:1px solid var(--rule)}
-section{padding:clamp(3.6rem,9vw,5.5rem) 0}
+@media(max-width:899px){
+  .mn{padding:0 0 .8rem;border-top:1px solid var(--rule-2);margin-bottom:0;padding-top:.6rem}
+}
+@media(min-width:900px){
+  .mn{text-align:right;border-top:1px solid var(--rule-2);padding-top:.6rem}
+}
+section.row{padding:clamp(2.6rem,6vw,4.5rem) 0 0}
+section.row:last-of-type{padding-bottom:clamp(3rem,7vw,5rem)}
+
 h2{
   font-family:var(--display);
-  font-size:clamp(1.7rem,1.2rem + 2.8vw,2.5rem);
-  font-weight:500;line-height:1.14;letter-spacing:-.01em;
-  margin:1rem 0 1.4rem;text-wrap:balance;
+  font-size:clamp(1.55rem,1.15rem + 2vw,2.1rem);
+  font-weight:500;line-height:1.18;letter-spacing:-.01em;
+  margin-bottom:1.1rem;text-wrap:balance;
 }
 p+p{margin-top:1rem}
-.money{font-family:var(--mono);font-weight:600;color:var(--ledger)}
-.money,.amt,.report{font-variant-numeric:tabular-nums}
+strong{font-weight:600}
+a{color:inherit}
+.tx a{text-decoration-color:var(--green);text-underline-offset:3px;text-decoration-thickness:1.5px}
+.tx a:hover{color:var(--green)}
+.money{font-family:var(--mono);font-weight:600;color:var(--green);font-variant-numeric:tabular-nums}
 
-/* ── masthead ─────────────────────────────── */
-header{padding:clamp(1.2rem,4vw,1.8rem) 0}
-.masthead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
-.wordmark{font-family:var(--display);font-size:clamp(1.25rem,4.5vw,1.5rem);font-weight:600;letter-spacing:-.01em}
-.wordmark span{color:var(--ledger);font-style:italic}
-.mast-right{display:flex;align-items:baseline;gap:1.4rem}
-.tagline{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
-.tool-link{
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ledger);text-decoration:none;padding:.35rem .7rem;
-  border:1px solid var(--ledger);border-radius:999px;white-space:nowrap;
-  transition:background .15s,color .15s;
-}
-.tool-link:hover{background:var(--ledger);color:var(--paper)}
-@media(max-width:560px){.tagline{display:none}}
-
-/* ── hero ─────────────────────────────────── */
-.hero{padding-top:clamp(3.2rem,9vw,5.5rem);padding-bottom:clamp(3.6rem,9vw,5rem);position:relative}
-.hero h1{
-  font-family:var(--display);
-  font-size:clamp(2.35rem,1.2rem + 6.8vw,4rem);
-  font-weight:500;line-height:1.06;letter-spacing:-.022em;
-  margin:1.1rem 0 1.5rem;text-wrap:balance;
-}
-.hero h1 em{font-style:italic;color:var(--ledger)}
-.hero .lede{font-size:clamp(1.1rem,1rem + .7vw,1.32rem);color:var(--ink-soft);max-width:36rem;line-height:1.55}
-.cta-row{margin-top:2.4rem;display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
+/* ── buttons: flat, green = action ── */
 .btn{
   display:inline-block;font-family:var(--mono);
-  font-size:clamp(.88rem,.8rem + .3vw,.98rem);font-weight:600;letter-spacing:.03em;
-  text-decoration:none;color:var(--paper);background:var(--ledger);
-  padding:1.05rem 1.7rem;border:2px solid var(--ledger-deep);border-radius:2px;
-  box-shadow:5px 5px 0 var(--ink);
-  transition:transform .13s ease,box-shadow .13s ease,background .13s ease;
+  font-size:1rem;font-weight:600;letter-spacing:.01em;
+  color:#fff;background:var(--green);text-decoration:none;
+  padding:1.05rem 1.6rem;border-radius:3px;
+  transition:background .15s ease;
 }
-.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink);background:var(--ledger-deep)}
-.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
-.cta-alt{font-size:1.02rem;color:var(--ink-soft)}
-.cta-alt a{color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--ledger);text-decoration-thickness:1.5px}
-.cta-alt a:hover{color:var(--ledger)}
-.hero-foot{
-  margin-top:2.6rem;padding-top:1.1rem;border-top:1px solid var(--rule);
-  display:flex;gap:2rem;flex-wrap:wrap;
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
-}
-.hero-foot b{color:var(--ledger);font-weight:600}
+.btn:hover{background:var(--green-dark)}
+.aside-cta{margin-top:.8rem;font-size:1.05rem;color:var(--ink-2)}
+.aside-cta a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;text-decoration-color:var(--green)}
+.aside-cta a:hover{color:var(--green)}
 
-/* ── ledger list ──────────────────────────── */
-.ledger-list{list-style:none;margin-top:1.7rem;border-top:1px solid var(--rule)}
-.ledger-list li{
-  display:grid;grid-template-columns:3.2rem 1fr;gap:.8rem;
-  padding:1.25rem 0;border-bottom:1px solid var(--rule);align-items:start;
-}
-.ledger-list .n{
-  font-family:var(--display);font-size:1.5rem;font-weight:500;font-style:italic;
-  color:var(--ledger);line-height:1.1;
-}
-.ledger-list li:last-child{border-bottom:3px double var(--rule-dark)}
+/* ── masthead ── */
+header{padding:clamp(1.3rem,4vw,2rem) 0 1.1rem}
+.masthead{display:flex;justify-content:space-between;align-items:baseline;gap:1.5rem;flex-wrap:wrap}
+.wordmark{font-family:var(--display);font-size:1.35rem;font-weight:600;letter-spacing:-.01em}
+.masthead .links{font-family:var(--mono);font-size:.875rem}
+.masthead .links a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule)}
+.masthead .links a:hover{color:var(--green);border-color:var(--green)}
+.rule-heavy{border:none;border-top:2px solid var(--rule-2)}
+.rule-heavy.thin{border-top-width:1px;margin-top:3px}
 
-/* ── services ─────────────────────────────── */
-.svc{margin-top:1.7rem;border-top:1px solid var(--rule)}
-.svc-item{
-  padding:1.4rem 0;border-bottom:1px solid var(--rule);
-  display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:baseline;
+/* ── hero ── */
+.hero{padding:clamp(3rem,8vw,5.5rem) 0 clamp(2.4rem,6vw,4rem)}
+.hero h1{
+  font-family:var(--display);
+  font-size:clamp(2.2rem,1.1rem + 5.6vw,3.6rem);
+  font-weight:500;line-height:1.08;letter-spacing:-.02em;
+  margin-bottom:1.5rem;text-wrap:balance;max-width:17ch;
 }
-.svc-item .tick{font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--ledger);letter-spacing:.1em}
-.svc-item h3{font-family:var(--display);font-size:1.28rem;font-weight:600;margin-bottom:.3rem}
-.svc-item p{color:var(--ink-soft);font-size:1.02rem}
+.hero .lede{font-size:clamp(1.2rem,1.05rem + .8vw,1.4rem);line-height:1.5;color:var(--ink-2);max-width:34rem}
+.hero .cta{margin-top:2.4rem}
+.hero .terms{margin-top:1.1rem;font-family:var(--mono);font-size:.875rem;color:var(--ink-2)}
 
-/* ── sample report card ───────────────────── */
+/* ── ledger list (problem) ── */
+.ledger{list-style:none;border-top:1px solid var(--rule-2)}
+.ledger li{
+  display:grid;grid-template-columns:7.5rem 1fr;gap:1.2rem;
+  padding:1.15rem 0;border-bottom:1px solid var(--rule);
+  font-size:1.06rem;
+}
+.ledger .k{font-family:var(--mono);font-size:.875rem;font-weight:500;color:var(--ink-2);padding-top:.25rem}
+.ledger li:last-child{border-bottom:1px solid var(--rule-2)}
+@media(max-width:560px){.ledger li{grid-template-columns:1fr;gap:.3rem}}
+
+/* ── services: definition rows ── */
+.svc{border-top:1px solid var(--rule-2)}
+.svc>div{
+  display:grid;grid-template-columns:11rem 1fr;gap:1.2rem;
+  padding:1.25rem 0;border-bottom:1px solid var(--rule);
+}
+.svc h3{font-family:var(--display);font-size:1.18rem;font-weight:600;line-height:1.3}
+.svc p{color:var(--ink-2);font-size:1.06rem}
+.svc>div:last-child{border-bottom:1px solid var(--rule-2)}
+@media(max-width:560px){.svc>div{grid-template-columns:1fr;gap:.3rem}}
+
+/* ── the artifact: sample report ── */
+.artifact{margin:2.4rem 0 0}
 .report{
-  position:relative;background:var(--card);
-  border:1px solid var(--ink);border-radius:2px;
-  box-shadow:0 1px 0 var(--rule),8px 10px 0 rgba(25,23,18,.07),8px 10px 0 1px var(--rule);
-  padding:clamp(1.4rem,4.5vw,2rem) clamp(1.2rem,4vw,1.8rem);
-  margin-top:2.2rem;font-family:var(--mono);font-size:.85rem;max-width:31rem;
+  background:var(--card);border:1px solid var(--ink);
+  padding:clamp(1.4rem,4vw,1.9rem) clamp(1.2rem,3.5vw,1.7rem);
+  font-family:var(--mono);font-size:.92rem;max-width:29rem;
+  font-variant-numeric:tabular-nums;
 }
-.report::before{
-  content:"SAMPLE FORMAT";position:absolute;top:1rem;right:-.7rem;
-  font-size:.6rem;font-weight:600;letter-spacing:.14em;color:var(--ledger);
-  border:1.5px solid var(--ledger);padding:.3rem .55rem;border-radius:2px;
-  transform:rotate(4deg);background:var(--card);opacity:.9;
-}
-.report-head{display:flex;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:.65rem;margin-bottom:1rem;font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.report-head{display:flex;justify-content:space-between;gap:1rem;border-bottom:2px solid var(--ink);padding-bottom:.6rem;margin-bottom:.9rem;font-weight:600;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
 .report-row{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px dotted var(--rule)}
-.report-row .v{color:var(--ledger);font-weight:600;white-space:nowrap}
-.report-row.total{border-bottom:none;border-top:2px solid var(--ink);margin-top:.6rem;padding-top:.8rem;font-weight:600;font-size:.95rem}
-.report-note{font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:.98rem;margin-top:1.1rem;line-height:1.5}
+.report-row .v{color:var(--green);font-weight:600;white-space:nowrap}
+.report-row.total{border-bottom:none;border-top:2px solid var(--ink);margin-top:.55rem;padding-top:.75rem;font-weight:600}
+.artifact figcaption{font-family:var(--mono);font-size:.875rem;color:var(--ink-2);margin-top:.8rem;max-width:29rem;line-height:1.55}
 
-/* ── timeline ─────────────────────────────── */
-.timeline{list-style:none;margin-top:1.9rem;position:relative;padding-left:1.9rem}
-.timeline:before{content:"";position:absolute;left:.4rem;top:.6rem;bottom:.6rem;width:2px;background:var(--rule)}
-.timeline li{position:relative;padding:0 0 2rem}
-.timeline li:last-child{padding-bottom:0}
-.timeline li:before{
-  content:"";position:absolute;left:-1.9rem;top:.4rem;width:.85rem;height:.85rem;
-  background:var(--paper);border:2.5px solid var(--ledger);border-radius:50%;
-}
-.timeline .label{margin-bottom:.35rem}
-.timeline .label::after{display:none}
-.timeline h3{font-family:var(--display);font-size:1.22rem;font-weight:600;margin-bottom:.3rem}
-.timeline p{color:var(--ink-soft);font-size:1.02rem;max-width:34rem}
+/* ── timeline: ruled rows ── */
+.days{border-top:1px solid var(--rule-2)}
+.days>div{display:grid;grid-template-columns:7.5rem 1fr;gap:1.2rem;padding:1.25rem 0;border-bottom:1px solid var(--rule)}
+.days .d{font-family:var(--mono);font-size:.875rem;font-weight:600;padding-top:.3rem}
+.days h3{font-family:var(--display);font-size:1.18rem;font-weight:600;margin-bottom:.25rem}
+.days p{color:var(--ink-2);font-size:1.06rem}
+.days>div:last-child{border-bottom:1px solid var(--rule-2)}
+@media(max-width:560px){.days>div{grid-template-columns:1fr;gap:.3rem}}
 
-/* ── pricing ──────────────────────────────── */
-.price-block{
-  border:1px solid var(--ink);border-radius:2px;margin-top:1.9rem;background:var(--card);
-  box-shadow:8px 10px 0 rgba(25,23,18,.07),8px 10px 0 1px var(--rule);
-}
-.price-tier{padding:clamp(1.5rem,4.5vw,2rem) clamp(1.3rem,4vw,1.8rem)}
-.price-tier+.price-tier{border-top:1px solid var(--rule)}
-.price-tier .amt{
-  font-family:var(--display);font-size:clamp(2rem,1.4rem + 3vw,2.7rem);
-  font-weight:600;color:var(--ledger);letter-spacing:-.02em;
-}
-.price-tier .amt small{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft);font-weight:400;letter-spacing:.06em;text-transform:uppercase}
-.price-tier h3{font-family:var(--display);font-size:1.25rem;font-weight:600;margin:.45rem 0 .5rem}
-.price-tier p{color:var(--ink-soft);font-size:1.02rem}
-.guarantee{
-  background:var(--ledger-tint);border-left:3px solid var(--ledger);border-radius:0 2px 2px 0;
-  padding:1.2rem 1.4rem;margin-top:1.7rem;font-style:italic;font-size:1.05rem;
-}
+/* ── pricing table ── */
+.prices{border-top:1px solid var(--rule-2)}
+.price{display:grid;grid-template-columns:11rem 1fr;gap:1.2rem;padding:1.6rem 0;border-bottom:1px solid var(--rule)}
+.price .amt{font-family:var(--display);font-weight:600;font-size:clamp(1.7rem,1.3rem + 2vw,2.2rem);letter-spacing:-.02em;color:var(--green);line-height:1.05}
+.price .amt small{display:block;font-family:var(--mono);font-size:.8rem;font-weight:500;color:var(--ink-2);letter-spacing:.04em;margin-top:.35rem}
+.price h3{font-family:var(--display);font-size:1.25rem;font-weight:600;margin-bottom:.35rem}
+.price p{color:var(--ink-2);font-size:1.06rem}
+.price:last-child{border-bottom:1px solid var(--rule-2)}
+@media(max-width:560px){.price{grid-template-columns:1fr;gap:.6rem}}
+.guarantee{margin-top:1.6rem;font-style:italic;font-size:1.12rem;max-width:34rem}
 
-/* ── faq ──────────────────────────────────── */
-.faq{margin-top:1.6rem;border-top:1px solid var(--rule)}
-.faq div{padding:1.35rem 0;border-bottom:1px solid var(--rule)}
-.faq dt{font-family:var(--display);font-weight:600;font-size:1.14rem;margin-bottom:.4rem;font-style:italic}
-.faq dd{color:var(--ink-soft);font-size:1.03rem}
+/* ── study cite ── */
+.cite{background:var(--card);border-top:2px solid var(--rule-2);border-bottom:1px solid var(--rule);padding:1.6rem clamp(1.2rem,3.5vw,1.7rem);margin-top:.4rem}
+.cite p{font-size:1.06rem}
+.cite .q{font-style:italic}
+.cite .src{font-family:var(--mono);font-size:.875rem;color:var(--ink-2);margin-top:.7rem}
 
-/* ── founder note ─────────────────────────── */
-.note{
-  background:var(--card);border:1px solid var(--rule);border-top:3px double var(--rule-dark);
-  border-radius:0 0 2px 2px;padding:clamp(1.7rem,5vw,2.4rem) clamp(1.4rem,4.5vw,2rem);
-  margin-top:1.9rem;box-shadow:0 2px 0 var(--rule);
-}
-.note p{font-size:1.07rem}
-.note .sig{font-family:var(--display);font-style:italic;font-size:1.7rem;margin-top:1.5rem;color:var(--ink)}
-.note .sig-role{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:.2rem}
+/* ── faq ── */
+.faq{border-top:1px solid var(--rule-2)}
+.faq div{padding:1.25rem 0;border-bottom:1px solid var(--rule)}
+.faq dt{font-weight:600;font-size:1.1rem;margin-bottom:.35rem}
+.faq dd{color:var(--ink-2);font-size:1.06rem}
+.faq div:last-child{border-bottom:1px solid var(--rule-2)}
 
-/* ── final cta ────────────────────────────── */
-.final{background:var(--ink);color:var(--paper);padding:clamp(4rem,10vw,5.5rem) 0;position:relative}
-.final .label{color:#8fd3ae}
-.final .label::after{background:#3a372f}
-.final h2{color:var(--paper)}
-.final .cta-alt{color:#b9b3a4}
-.final .cta-alt a{color:var(--paper);text-decoration-color:#8fd3ae}
-.final .btn{box-shadow:5px 5px 0 rgba(143,211,174,.35)}
-.final .btn:hover{box-shadow:8px 8px 0 rgba(143,211,174,.35)}
+/* ── founder letter ── */
+.letter p{font-size:1.12rem;max-width:34rem}
+.letter .sig{font-family:var(--display);font-style:italic;font-size:1.6rem;margin-top:1.4rem}
+.letter .sig-role{font-family:var(--mono);font-size:.875rem;color:var(--ink-2);margin-top:.2rem}
 
-/* ── footer ───────────────────────────────── */
-footer{padding:2.4rem 0 7.5rem;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);letter-spacing:.04em;line-height:2}
-footer a{color:var(--ink-soft)}
+/* ── final ── */
+.final{border-top:2px solid var(--rule-2);margin-top:clamp(3rem,7vw,5rem)}
+.final .inner{padding:clamp(2.6rem,6vw,4rem) 0}
+.final h2{max-width:22ch}
 
-/* ── sticky mobile bar ────────────────────── */
+footer{border-top:1px solid var(--rule);padding:1.8rem 0 7rem;font-family:var(--mono);font-size:.8rem;color:var(--ink-2);line-height:2.1}
+footer a{color:var(--ink-2)}
+
+/* ── sticky mobile bar ── */
 .sticky-cta{
   position:fixed;left:0;right:0;bottom:0;z-index:100;
-  background:color-mix(in srgb,var(--paper) 92%,transparent);
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  border-top:2px solid var(--ink);
-  padding:.75rem var(--pad) calc(.75rem + env(safe-area-inset-bottom));
+  background:var(--paper);border-top:1px solid var(--ink);
+  padding:.7rem clamp(1.4rem,5vw,2.5rem) calc(.7rem + env(safe-area-inset-bottom));
   display:flex;justify-content:center;
-  transform:translateY(110%);transition:transform .28s ease;
+  transform:translateY(110%);transition:transform .3s ease-out;
 }
 .sticky-cta.on{transform:translateY(0)}
-.sticky-cta .btn{width:100%;max-width:24rem;text-align:center;padding:.95rem 1rem;box-shadow:3px 3px 0 var(--ink)}
-@media(min-width:800px){.sticky-cta{display:none}}
-
-/* ── reveals ──────────────────────────────── */
-@media(prefers-reduced-motion:no-preference){
-  .hero>*{opacity:0;transform:translateY(14px);animation:up .75s cubic-bezier(.2,.7,.3,1) forwards}
-  .hero>*:nth-child(2){animation-delay:.08s}.hero>*:nth-child(3){animation-delay:.16s}
-  .hero>*:nth-child(4){animation-delay:.26s}.hero>*:nth-child(5){animation-delay:.36s}
-  @keyframes up{to{opacity:1;transform:none}}
-  /* reveal-on-scroll only when JS is confirmed running — content never JS-gated */
-  html.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
-  html.js .rv.in{opacity:1;transform:none}
-}
+.sticky-cta .btn{width:100%;max-width:24rem;text-align:center;padding:.95rem 1rem}
+@media(min-width:900px){.sticky-cta{display:none}}
 </style>
 </head>
 <body>
 
-<header class="wrap">
-  <div class="masthead">
-    <div class="wordmark">Agency<span>Retain</span></div>
-    <div class="mast-right">
-      <div class="tagline">Operators, not software</div>
-      <a class="tool-link" href="calculator.html">Free leakage calculator</a>
+<div class="sheet">
+  <header>
+    <div class="masthead">
+      <div class="wordmark">AgencyRetain</div>
+      <div class="links"><a href="calculator.html">Leakage calculator</a> &nbsp;·&nbsp; <a href="renewal-study.html">The 5,408-review study</a></div>
     </div>
-  </div>
-</header>
-<div class="wrap"><hr class="rule-double"></div>
+  </header>
+  <hr class="rule-heavy"><hr class="rule-heavy thin">
 
-<!-- ═══ HERO ═══ -->
-<section class="hero wrap" id="top">
-  <span class="label">A note to independent agency principals</span>
-  <h1>Your agency doesn't need another tool. It needs <em>someone to run</em> the one you have.</h1>
-  <p class="lede">AgencyRetain runs quote follow-up, renewal, and cross-sell campaigns for independent P&amp;C agencies — done for you, on your existing stack or ours — and reports results in dollars recovered, not open rates.</p>
-  <div class="cta-row">
-    <!-- data-todo: replace href with Stripe payment link -->
-    <a class="btn" href="#pricing" data-todo="stripe-link">Start the $500 Sprint&nbsp;→</a>
-    <p class="cta-alt">Not sure yet? <a href="#pricing" data-todo="calcom-link">Book a 15-minute fit call first</a> — no deck, no demo.</p>
-  </div>
-  <div class="hero-foot">
-    <span><b>$500</b>&nbsp;flat entry — priced on the page</span>
-    <span><b>14 days</b>&nbsp;to a dollars report</span>
-    <span><b>No</b>&nbsp;long-term contract</span>
-  </div>
-</section>
-
-<!-- ═══ PROBLEM ═══ -->
-<section class="wrap rv">
-  <span class="label">The math</span>
-  <h2>One point of retention is real money. Most agencies leak two or three.</h2>
-  <ul class="ledger-list">
-    <li><span class="n">i.</span><span>Acquiring a policyholder costs roughly <strong>5× keeping one</strong> — and the leakage is mostly quotes and renewals nobody touched on time.</span></li>
-    <li><span class="n">ii.</span><span>Renewal outreach that starts 30 days out is too late. The shopping already happened. <strong>The lift lives at 90 days.</strong></span></li>
-    <li><span class="n">iii.</span><span>Quotes without a follow-up sequence quietly buy from whoever calls in week three.</span></li>
-    <li><span class="n">iv.</span><span>And the tool you bought to fix this? Industry data says most agencies use a fraction of it. <strong>The gap isn't software. It's operation.</strong></span></li>
-  </ul>
-  <p style="margin-top:1.5rem">Want this math on your own book size? <a href="calculator.html" style="color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--ledger);text-decoration-thickness:1.5px">Run the free leakage calculator</a> — 30 seconds, no email gate.</p>
-</section>
-
-<!-- ═══ WHAT WE DO ═══ -->
-<section class="wrap rv">
-  <span class="label">What we do</span>
-  <h2>Done-for-you revenue recovery</h2>
-  <div class="svc">
-    <div class="svc-item"><span class="tick">01</span><div>
-      <h3>Quote follow-up</h3>
-      <p>Every quote gets a sequence. No more "the hot ones get chased, the rest go quiet."</p>
-    </div></div>
-    <div class="svc-item"><span class="tick">02</span><div>
-      <h3>Renewal engine</h3>
-      <p>Touchpoints from 90 days out, segmented by line of business.</p>
-    </div></div>
-    <div class="svc-item"><span class="tick">03</span><div>
-      <h3>Cross-sell</h3>
-      <p>Coverage-gap campaigns keyed to what each client already holds. Email-only, by design.</p>
-    </div></div>
-    <div class="svc-item"><span class="tick">04</span><div>
-      <h3>Proof</h3>
-      <p>A monthly report in written premium and renewals retained. If we can't show lift, you shouldn't pay us.</p>
-    </div></div>
-  </div>
-  <p style="margin-top:1.5rem">We work inside your existing stack — Levitate, Fuse, AgencyZoom, Better Agency, your AMS — or install a lean one. <strong>You keep your tools. We make them produce.</strong></p>
-
-  <div class="report" aria-label="Sample report format">
-    <div class="report-head"><span>Day-14 Sprint Report</span><span>AgencyRetain</span></div>
-    <div class="report-row"><span>Segment · renewals 45–90 days out</span><span class="v">___ policies</span></div>
-    <div class="report-row"><span>Policyholders engaged</span><span class="v">___</span></div>
-    <div class="report-row"><span>Review calls booked</span><span class="v">___</span></div>
-    <div class="report-row"><span>Renewals confirmed in window</span><span class="v">___</span></div>
-    <div class="report-row total"><span>Premium touched</span><span class="v">$ ______</span></div>
-    <p class="report-note">This is the report you get on Day 14 — dollars first, email stats second. The numbers come from your book, not our brochure.</p>
-  </div>
-</section>
-
-<!-- ═══ HOW THE SPRINT WORKS ═══ -->
-<section class="wrap rv">
-  <span class="label">How the sprint works</span>
-  <h2>Fourteen days, one segment of your book, no homework for your staff.</h2>
-  <ol class="timeline">
-    <li>
-      <span class="label">Days 1–2</span>
-      <h3>Book analysis</h3>
-      <p>You send a renewal report or book export. We identify the policies renewing in 45–90 days and hand you a one-page Leakage Snapshot: renewals at risk, premium exposed.</p>
-    </li>
-    <li>
-      <span class="label">Days 3–4</span>
-      <h3>Campaign build — you approve everything</h3>
-      <p>A three-touch sequence in your agency's name and voice, sent from your systems. Nothing launches until you've signed off.</p>
-    </li>
-    <li>
-      <span class="label">Days 5–12</span>
-      <h3>We run it</h3>
-      <p>Replies route to your producers; we watch every thread and nudge unanswered ones within four business hours. That follow-through is the product.</p>
-    </li>
-    <li>
-      <span class="label">Days 13–14</span>
-      <h3>The report</h3>
-      <p>Renewals confirmed, calls booked, premium touched — in dollars. Then you decide if we keep going. No contract, no pressure.</p>
-    </li>
-  </ol>
-</section>
-
-<!-- ═══ PRICING ═══ -->
-<section class="wrap rv" id="pricing">
-  <span class="label">Pricing — yes, actual numbers</span>
-  <h2>Start small. Scale on proof.</h2>
-  <div class="price-block">
-    <div class="price-tier">
-      <div class="amt">$500 <small>flat · once</small></div>
-      <h3>Renewal Recovery Sprint</h3>
-      <p>One segment of your book, one campaign, 14 days. You see the results before any retainer conversation happens.</p>
-      <div class="cta-row" style="margin-top:1.3rem">
+  <!-- HERO -->
+  <div class="row hero" id="top">
+    <div class="mn">A note to independent agency principals</div>
+    <div class="tx">
+      <h1>Your agency doesn't need another tool. It needs someone to run the one you have.</h1>
+      <p class="lede">AgencyRetain runs quote follow-up, renewal, and cross-sell campaigns for independent P&amp;C agencies. Done for you, on your existing stack or ours. Reported in dollars recovered, not open rates.</p>
+      <div class="cta">
         <!-- data-todo: replace href with Stripe payment link -->
-        <a class="btn" href="#" data-todo="stripe-link">Start the $500 Sprint&nbsp;→</a>
+        <a class="btn" href="#pricing" data-todo="stripe-link">Start the $500 Sprint</a>
+        <p class="aside-cta">Not sure yet? <a href="#pricing" data-todo="calcom-link">Book a 15-minute fit call first</a>. No deck, no demo.</p>
+        <p class="terms">$500 flat, once. 14 days. No contract.</p>
       </div>
     </div>
-    <div class="price-tier">
-      <div class="amt">$1,000–1,500 <small>/ month</small></div>
-      <h3>Operator Retainer</h3>
-      <p>Full follow-up engine: quotes, renewals, cross-sell, monthly dollar-denominated reporting. No long-term contract — we retain agencies the same way you retain policyholders: by producing.</p>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="row">
+    <div class="mn">The math</div>
+    <div class="tx">
+      <h2>One point of retention is real money. Most agencies leak two or three.</h2>
+      <ul class="ledger">
+        <li><span class="k">Acquisition</span><span>Winning a new policyholder costs roughly <strong>5× keeping one</strong>. The leakage is mostly quotes and renewals nobody touched on time.</span></li>
+        <li><span class="k">Timing</span><span>Renewal outreach that starts 30 days out is too late. The shopping already happened. <strong>The lift lives at 90 days.</strong></span></li>
+        <li><span class="k">Quotes</span><span>A quote without a follow-up sequence quietly buys from whoever calls in week three.</span></li>
+        <li><span class="k">Operation</span><span>The tool you bought to fix this? Most agencies use a fraction of it. <strong>The gap is operation, not software.</strong></span></li>
+      </ul>
+      <p style="margin-top:1.3rem">Want this math on your own book size? <a href="calculator.html">Run the free leakage calculator</a>. Thirty seconds, no email gate.</p>
+    </div>
+  </section>
+
+  <!-- EVIDENCE: the study -->
+  <section class="row">
+    <div class="mn">What policyholders say<br>(our research, July 2026)</div>
+    <div class="tx">
+      <h2>We read 5,408 policyholder reviews of 211 independent agencies. The five-star ones all do the same thing.</h2>
+      <p>The most common concrete praise, by a wide margin — 121 reviews, 98% of them five stars — is some version of <em>"they shopped the market for me and saved me money."</em> The rare one-star reviews are almost never about price. They're about silence.</p>
+      <div class="cite">
+        <p class="q">"He asked if he could reach out after I received my renewal notices. He called again, and the new quotes he put together would save me a couple thousand dollars…"</p>
+        <p class="src">Verbatim five-star Google review of an Oklahoma City independent agency · <a href="renewal-study.html">read the full study</a></p>
+      </div>
+      <p style="margin-top:1.3rem">That producer diarized a renewal date and called on it. To the customer it reads like magic. Operationally, it's a calendar entry — <strong>run every week, on every policy. That's the service.</strong></p>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="row">
+    <div class="mn">What we run</div>
+    <div class="tx">
+      <h2>Done-for-you revenue recovery</h2>
+      <div class="svc">
+        <div><h3>Quote follow-up</h3><p>Every quote gets a sequence. No more "the hot ones get chased, the rest go quiet."</p></div>
+        <div><h3>Renewal engine</h3><p>Touchpoints from 90 days out, segmented by line of business.</p></div>
+        <div><h3>Cross-sell</h3><p>Coverage-gap campaigns keyed to what each client already holds. Email-only, by design.</p></div>
+        <div><h3>Proof</h3><p>A monthly report in written premium and renewals retained. If we can't show lift, you shouldn't pay us.</p></div>
+      </div>
+      <p style="margin-top:1.3rem">We work inside your existing stack — Levitate, Fuse, AgencyZoom, Better Agency, your AMS — or install a lean one. <strong>You keep your tools. We make them produce.</strong></p>
+      <figure class="artifact">
+        <div class="report" aria-label="Sample report format">
+          <div class="report-head"><span>Day-14 Sprint Report</span><span>AgencyRetain</span></div>
+          <div class="report-row"><span>Segment · renewals 45–90 days out</span><span class="v">___ policies</span></div>
+          <div class="report-row"><span>Policyholders engaged</span><span class="v">___</span></div>
+          <div class="report-row"><span>Review calls booked</span><span class="v">___</span></div>
+          <div class="report-row"><span>Renewals confirmed in window</span><span class="v">___</span></div>
+          <div class="report-row total"><span>Premium touched</span><span class="v">$ ______</span></div>
+        </div>
+        <figcaption>The report you get on Day 14. The numbers come from your book, not our brochure.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- HOW THE SPRINT WORKS -->
+  <section class="row">
+    <div class="mn">How the sprint works</div>
+    <div class="tx">
+      <h2>Fourteen days, one segment of your book, no homework for your staff.</h2>
+      <div class="days">
+        <div><span class="d">Days 1–2</span><div><h3>Book analysis</h3><p>You send a renewal report or book export. We identify the policies renewing in 45–90 days and hand you a one-page Leakage Snapshot: renewals at risk, premium exposed.</p></div></div>
+        <div><span class="d">Days 3–4</span><div><h3>Campaign build</h3><p>A three-touch sequence in your agency's name and voice, sent from your systems. Nothing launches until you've signed off on every word.</p></div></div>
+        <div><span class="d">Days 5–12</span><div><h3>We run it</h3><p>Replies route to your producers; we watch every thread and nudge unanswered ones within four business hours. That follow-through is the product.</p></div></div>
+        <div><span class="d">Days 13–14</span><div><h3>The report</h3><p>Renewals confirmed, calls booked, premium touched — in dollars. Then you decide if we keep going. No contract, no pressure.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="row" id="pricing">
+    <div class="mn">Pricing<br>(actual numbers, on the page)</div>
+    <div class="tx">
+      <h2>Start small. Scale on proof.</h2>
+      <div class="prices">
+        <div class="price">
+          <div><div class="amt">$500<small>flat · once</small></div></div>
+          <div>
+            <h3>Renewal Recovery Sprint</h3>
+            <p>One segment of your book, one campaign, 14 days. You see the results before any retainer conversation happens.</p>
+            <!-- data-todo: replace href with Stripe payment link -->
+            <p style="margin-top:1.1rem"><a class="btn" href="#" data-todo="stripe-link">Start the $500 Sprint</a></p>
+          </div>
+        </div>
+        <div class="price">
+          <div><div class="amt">$1,000<small>to $1,500 / month</small></div></div>
+          <div>
+            <h3>Operator Retainer</h3>
+            <p>Full follow-up engine: quotes, renewals, cross-sell, monthly dollar-denominated reporting. No long-term contract — we retain agencies the same way you retain policyholders: by producing.</p>
+          </div>
+        </div>
+      </div>
+      <p class="guarantee">If the sprint doesn't produce measurable renewals or appointments, it doesn't convert to a retainer. That's the whole point of starting there.</p>
+      <p class="aside-cta">Prefer to talk first? <a href="#" data-todo="calcom-link">Book a 15-minute fit call</a>.</p>
+    </div>
+  </section>
+
+  <!-- COMPLIANCE -->
+  <section class="row">
+    <div class="mn">Compliance</div>
+    <div class="tx">
+      <h2>Compliance-safe by design</h2>
+      <p>Email-first campaigns. SMS only for informational notices with documented consent. Cross-sell never by text. State-aware sending windows, including Florida's. Real-time opt-out with a full audit log. <strong>Your E&amp;O carrier will like us.</strong></p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="row">
+    <div class="mn">Fair questions</div>
+    <div class="tx">
+      <h2>What agency owners ask us</h2>
+      <dl class="faq">
+        <div><dt>We already pay for Levitate / Fuse / AgencyZoom.</dt><dd>Perfect — keep it. That's the tool we'll run. The renewal sequences exist in there; what's missing is someone reconciling the book data and routing the follow-ups. That's us.</dd></div>
+        <div><dt>Who writes the content?</dt><dd>We do, per line of business, in your agency's voice. You approve everything before launch.</dd></div>
+        <div><dt>What do you need access to?</dt><dd>Read access to your AMS or a book export, scoped and logged. We sign a data-handling agreement, and your data is never used for anything but your campaigns.</dd></div>
+        <div><dt>What if it doesn't work?</dt><dd>Then we'll say so, in writing, with the numbers — and you're out $500, not a year-long contract. The sprint exists so neither of us has to take anything on faith.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="row">
+    <div class="mn">Who's behind this</div>
+    <div class="tx letter">
+      <!-- founder bio approved by Luke 2026-07-15 -->
+      <h2>A note from the operator</h2>
+      <p>We're a new firm, and we won't pretend otherwise — you'll find no wall of logos below this paragraph. What you'll find instead is a $500, 14-day test where the results come from your own book, on your own systems, before you commit to anything.</p>
+      <p style="margin-top:1rem">I run service businesses for a living. I built AgencyRetain because every agency principal I've talked to owns good software that nobody has time to operate. We're the operators.</p>
+      <p class="sig">— Luke</p>
+      <p class="sig-role">Founder, AgencyRetain</p>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <div class="final">
+    <div class="row inner">
+      <div class="mn">The next step</div>
+      <div class="tx">
+        <h2>Find out what your book is leaking. Fourteen days. $500. Your numbers.</h2>
+        <div class="cta" style="margin-top:1.6rem">
+          <!-- data-todo: replace href with Stripe payment link -->
+          <a class="btn" href="#" data-todo="stripe-link">Start the $500 Sprint</a>
+          <p class="aside-cta">or <a href="#" data-todo="calcom-link">book a 15-minute fit call</a></p>
+        </div>
+      </div>
     </div>
   </div>
-  <p class="guarantee">If the sprint doesn't produce measurable renewals or appointments, it doesn't convert to a retainer. That's the whole point of starting there.</p>
-  <p class="cta-alt" style="margin-top:1.3rem">Prefer to talk first? <a href="#" data-todo="calcom-link">Book a 15-minute fit call</a>.</p>
-</section>
 
-<!-- ═══ COMPLIANCE ═══ -->
-<section class="wrap rv">
-  <span class="label">Compliance</span>
-  <h2>Compliance-safe by design</h2>
-  <p>Email-first campaigns. SMS only for informational notices with documented consent. Cross-sell never by text. State-aware sending windows — yes, including Florida's. Real-time opt-out with a full audit log.</p>
-  <p><strong>Your E&amp;O carrier will like us.</strong></p>
-</section>
-
-<!-- ═══ FAQ ═══ -->
-<section class="wrap rv">
-  <span class="label">Fair questions</span>
-  <h2>What agency owners ask us</h2>
-  <dl class="faq">
-    <div>
-      <dt>We already pay for Levitate / Fuse / AgencyZoom.</dt>
-      <dd>Perfect — keep it. That's the tool we'll run. The renewal sequences exist in there; what's missing is someone reconciling the book data and routing the follow-ups. That's us.</dd>
-    </div>
-    <div>
-      <dt>Who writes the content?</dt>
-      <dd>We do, per line of business, in your agency's voice. You approve everything before launch.</dd>
-    </div>
-    <div>
-      <dt>What do you need access to?</dt>
-      <dd>Read access to your AMS or a book export, scoped and logged. We sign a data-handling agreement, and your data is never used for anything but your campaigns.</dd>
-    </div>
-    <div>
-      <dt>What if it doesn't work?</dt>
-      <dd>Then we'll say so, in writing, with the numbers — and you're out $500, not a year-long contract. The sprint exists so neither of us has to take anything on faith.</dd>
-    </div>
-  </dl>
-</section>
-
-<!-- ═══ FOUNDER NOTE ═══ -->
-<section class="wrap rv">
-  <span class="label">Who's behind this</span>
-  <h2>A note from the operator</h2>
-  <div class="note">
-    <!-- founder bio approved by Luke 2026-07-15 -->
-    <p>We're a new firm, and we won't pretend otherwise — you'll find no wall of logos below this paragraph. What you'll find instead is a $500, 14-day test where the results come from your own book, on your own systems, before you commit to anything.</p>
-    <p style="margin-top:1rem">I run service businesses for a living. I built AgencyRetain because every agency principal I've talked to owns good software that nobody has time to operate. We're the operators.</p>
-    <p class="sig">— Luke</p>
-    <p class="sig-role">Founder, AgencyRetain</p>
-  </div>
-</section>
-
-<!-- ═══ FINAL CTA ═══ -->
-<section class="final">
-  <div class="wrap">
-    <span class="label">The next step</span>
-    <h2>Find out what your book is leaking. Fourteen days. $500. Your numbers.</h2>
-    <div class="cta-row">
-      <!-- data-todo: replace href with Stripe payment link -->
-      <a class="btn" href="#" data-todo="stripe-link">Start the $500 Sprint&nbsp;→</a>
-      <p class="cta-alt">or <a href="#" data-todo="calcom-link">book a 15-minute fit call</a></p>
-    </div>
-  </div>
-</section>
-
-<footer class="wrap">
-  <p>AgencyRetain · <!-- TODO: physical address required for CAN-SPAM -->[address]</p>
-  <p><a href="renewal-study.html">Research: the 5,408-review renewal study</a> · <a href="calculator.html">Leakage calculator</a></p>
-  <p><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · Not affiliated with any carrier.</p>
-</footer>
+  <footer>
+    <p>AgencyRetain · <!-- TODO: physical address required for CAN-SPAM -->[address]</p>
+    <p><a href="renewal-study.html">Research: the 5,408-review renewal study</a> · <a href="calculator.html">Leakage calculator</a></p>
+    <p><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · Not affiliated with any carrier.</p>
+  </footer>
+</div>
 
 <!-- sticky mobile CTA -->
 <div class="sticky-cta" id="stickyCta">
   <!-- data-todo: replace href with Stripe payment link -->
-  <a class="btn" href="#pricing" data-todo="stripe-link">Start the $500 Sprint&nbsp;→</a>
+  <a class="btn" href="#pricing" data-todo="stripe-link">Start the $500 Sprint</a>
 </div>
 
 <script>
 if('IntersectionObserver' in window){
-  document.documentElement.classList.add('js');
   const hero=document.getElementById('top'),bar=document.getElementById('stickyCta');
   new IntersectionObserver(([e])=>{bar.classList.toggle('on',!e.isIntersecting)},{threshold:0}).observe(hero);
-  const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.12});
-  document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 }
 </script>
 </body>
