@@ -8,35 +8,38 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23faf7f0'/%3E%3Cpath d='M6 26 16 5l10 21h-4.6L16 14.2 10.6 26z' fill='%231e6b42'/%3E%3Crect x='5' y='28' width='22' height='2' fill='%231c1a16'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#faf7f0; --paper-deep:#f3eee2; --ink:#1c1a16; --ink-soft:#57534a;
-  --ledger:#1e6b42; --ledger-deep:#175636; --rule:#d8d2c2; --rule-dark:#1c1a16;
+  --paper:#faf6ec; --paper-deep:#f1ead9; --card:#fffdf7; --ink:#191712; --ink-soft:#5c564a;
+  --ledger:#1e6b42; --ledger-deep:#14522f; --rule:#d9d1bc; --rule-dark:#191712;
   --red:#9c3a2e;
+  --display:'Fraunces',Georgia,serif;
   --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --pad:clamp(1.4rem,5vw,2rem);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:1.1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+body{background:var(--paper);background-image:radial-gradient(ellipse 120% 80% at 50% -10%, #fffbf2 0%, var(--paper) 55%);color:var(--ink);font-family:var(--serif);font-size:clamp(1.04rem,1rem + .25vw,1.13rem);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.35;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
 ::selection{background:var(--ledger);color:var(--paper)}
-.wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
-.label{font-family:var(--mono);font-size:.6875rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ledger)}
+.wrap{max-width:43rem;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.label{font-family:var(--mono);font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ledger)}
 .rule-double{border:none;border-top:3px double var(--rule-dark)}
 header{padding:1.4rem 0}
 .masthead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-.wordmark{font-size:1.3rem;font-weight:600}
-.wordmark span{color:var(--ledger)}
+.wordmark{font-family:var(--display);font-size:clamp(1.25rem,4.5vw,1.5rem);font-weight:600}
+.wordmark span{color:var(--ledger);font-style:italic}
 .wordmark a{color:inherit;text-decoration:none}
 .tagline{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
 @media(max-width:480px){.tagline{display:none}}
 
-.hero{padding:3rem 0 2rem}
-h1{font-size:clamp(1.9rem,5.5vw,2.8rem);font-weight:500;line-height:1.15;letter-spacing:-.02em;margin:.9rem 0 1rem}
+.hero{padding:clamp(2.6rem,7vw,3.6rem) 0 clamp(1.6rem,4vw,2.2rem)}
+h1{font-family:var(--display);font-size:clamp(2rem,1.2rem + 4.5vw,3rem);font-weight:500;line-height:1.1;letter-spacing:-.02em;margin:.9rem 0 1rem;text-wrap:balance}
 h1 em{font-style:italic;color:var(--ledger)}
-.lede{color:var(--ink-soft);max-width:36rem}
+.lede{color:var(--ink-soft);max-width:36rem;font-size:clamp(1.05rem,1rem + .4vw,1.2rem)}
 
 /* form */
-.calc{background:#fff;border:1px solid var(--ink);box-shadow:6px 6px 0 var(--paper-deep),6px 6px 0 1px var(--rule);padding:1.8rem 1.5rem;margin:2rem 0}
+.calc{background:var(--card);border:1px solid var(--ink);border-radius:2px;box-shadow:0 1px 0 var(--rule),8px 10px 0 rgba(25,23,18,.07),8px 10px 0 1px var(--rule);padding:clamp(1.5rem,4.5vw,2rem) clamp(1.2rem,4vw,1.8rem);margin:2.2rem 0}
 .field{margin-bottom:1.6rem}
 .field label{display:block;font-weight:600;font-size:1.05rem;margin-bottom:.2rem}
 .field .hint{font-size:.92rem;color:var(--ink-soft);font-style:italic;margin-bottom:.55rem}
@@ -53,15 +56,15 @@ h1 em{font-style:italic;color:var(--ledger)}
 .res-row .v.loss{color:var(--red)}
 .res-row .v.gain{color:var(--ledger)}
 .res-big{margin:1.4rem 0 .4rem;padding:1.2rem 1.3rem;background:var(--paper-deep);border-left:3px solid var(--red)}
-.res-big .n{font-family:var(--mono);font-weight:600;font-size:clamp(1.7rem,5vw,2.3rem);color:var(--red);display:block}
+.res-big .n{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,1.3rem + 3.5vw,2.6rem);color:var(--red);display:block;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .res-big .t{font-size:1rem;color:var(--ink-soft)}
 .method{font-size:.92rem;color:var(--ink-soft);font-style:italic;margin-top:1.2rem}
 .method a{color:var(--ink-soft)}
 
 /* cta */
 .cta-block{padding:2.5rem 0 4rem}
-.btn{display:inline-block;font-family:var(--mono);font-size:.95rem;font-weight:600;text-decoration:none;color:var(--paper);background:var(--ledger);padding:1rem 1.6rem;border:2px solid var(--ledger-deep);box-shadow:4px 4px 0 var(--ink);transition:transform .12s ease,box-shadow .12s ease}
-.btn:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.btn{display:inline-block;font-family:var(--mono);font-size:clamp(.88rem,.8rem + .3vw,.95rem);font-weight:600;letter-spacing:.03em;text-decoration:none;color:var(--paper);background:var(--ledger);padding:1.05rem 1.7rem;border:2px solid var(--ledger-deep);border-radius:2px;box-shadow:5px 5px 0 var(--ink);transition:transform .13s ease,box-shadow .13s ease,background .13s ease}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink);background:var(--ledger-deep)}
 .cta-alt{font-size:1.02rem;color:var(--ink-soft);margin-top:.9rem}
 .cta-alt a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--ledger)}
 footer{padding:2rem 0 3rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}

@@ -12,212 +12,238 @@
 <!-- TODO before launch: set STRIPE sprint payment link + CAL.COM booking link (search for data-todo) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#faf7f0;
-  --paper-deep:#f3eee2;
-  --ink:#1c1a16;
-  --ink-soft:#57534a;
+  --paper:#faf6ec;
+  --paper-deep:#f1ead9;
+  --card:#fffdf7;
+  --ink:#191712;
+  --ink-soft:#5c564a;
   --ledger:#1e6b42;
-  --ledger-deep:#175636;
-  --rule:#d8d2c2;
-  --rule-dark:#1c1a16;
+  --ledger-deep:#14522f;
+  --ledger-tint:#e7efe6;
+  --rule:#d9d1bc;
+  --rule-dark:#191712;
+  --display:'Fraunces',Georgia,serif;
   --serif:'Newsreader',Georgia,serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --pad:clamp(1.4rem,5vw,2rem);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   background:var(--paper);
+  background-image:radial-gradient(ellipse 120% 80% at 50% -10%, #fffbf2 0%, var(--paper) 55%);
   color:var(--ink);
   font-family:var(--serif);
-  font-size:1.125rem;
-  line-height:1.6;
+  font-size:clamp(1.06rem,1rem + .3vw,1.17rem);
+  line-height:1.65;
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* paper grain */
+body::after{
+  content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 ::selection{background:var(--ledger);color:var(--paper)}
-.wrap{max-width:44rem;margin:0 auto;padding:0 1.25rem}
+.wrap{max-width:43rem;margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
 
-/* ── labels & rules ─────────────────────────── */
+/* ── type & furniture ─────────────────────── */
 .label{
-  font-family:var(--mono);
-  font-size:.6875rem;
-  font-weight:600;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--ledger);
+  font-family:var(--mono);font-size:.7rem;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--ledger);
+  display:flex;align-items:center;gap:.8rem;
 }
-.rule-double{border:none;border-top:3px double var(--rule-dark);margin:0}
-.rule-thin{border:none;border-top:1px solid var(--rule);margin:0}
-section{padding:3.5rem 0}
+.label::after{content:"";flex:1;height:1px;background:var(--rule)}
+.rule-double{border:none;border-top:3px double var(--rule-dark)}
+.rule-thin{border:none;border-top:1px solid var(--rule)}
+section{padding:clamp(3.6rem,9vw,5.5rem) 0}
 h2{
-  font-size:clamp(1.6rem,4.5vw,2.1rem);
-  font-weight:600;
-  line-height:1.2;
-  letter-spacing:-.01em;
-  margin:.65rem 0 1.25rem;
+  font-family:var(--display);
+  font-size:clamp(1.7rem,1.2rem + 2.8vw,2.5rem);
+  font-weight:500;line-height:1.14;letter-spacing:-.01em;
+  margin:1rem 0 1.4rem;text-wrap:balance;
 }
 p+p{margin-top:1rem}
-.money{font-family:var(--mono);font-weight:600;color:var(--ledger);white-space:nowrap}
-
-/* ── masthead ───────────────────────────────── */
-header{padding:1.4rem 0}
-.masthead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-.wordmark{font-size:1.3rem;font-weight:600;letter-spacing:-.01em}
-.wordmark span{color:var(--ledger)}
-.mast-right{display:flex;align-items:baseline;gap:1.4rem}
-.tagline{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
-.tool-link{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ledger);text-decoration:none;border-bottom:1px solid var(--ledger)}
-.tool-link:hover{color:var(--ledger-deep)}
-@media(max-width:480px){.tagline{display:none}}
+.money{font-family:var(--mono);font-weight:600;color:var(--ledger)}
 .money,.amt,.report{font-variant-numeric:tabular-nums}
 
-/* ── hero ───────────────────────────────────── */
-.hero{padding:3.5rem 0 4rem}
+/* ── masthead ─────────────────────────────── */
+header{padding:clamp(1.2rem,4vw,1.8rem) 0}
+.masthead{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.wordmark{font-family:var(--display);font-size:clamp(1.25rem,4.5vw,1.5rem);font-weight:600;letter-spacing:-.01em}
+.wordmark span{color:var(--ledger);font-style:italic}
+.mast-right{display:flex;align-items:baseline;gap:1.4rem}
+.tagline{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.tool-link{
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ledger);text-decoration:none;padding:.35rem .7rem;
+  border:1px solid var(--ledger);border-radius:999px;white-space:nowrap;
+  transition:background .15s,color .15s;
+}
+.tool-link:hover{background:var(--ledger);color:var(--paper)}
+@media(max-width:560px){.tagline{display:none}}
+
+/* ── hero ─────────────────────────────────── */
+.hero{padding:clamp(3.2rem,9vw,5.5rem) 0 clamp(3.6rem,9vw,5rem);position:relative}
 .hero h1{
-  font-size:clamp(2.1rem,6.5vw,3.4rem);
-  font-weight:500;
-  line-height:1.12;
-  letter-spacing:-.02em;
-  margin:.9rem 0 1.4rem;
+  font-family:var(--display);
+  font-size:clamp(2.35rem,1.2rem + 6.8vw,4rem);
+  font-weight:500;line-height:1.06;letter-spacing:-.022em;
+  margin:1.1rem 0 1.5rem;text-wrap:balance;
 }
 .hero h1 em{font-style:italic;color:var(--ledger)}
-.hero .lede{font-size:clamp(1.125rem,2.5vw,1.3rem);color:var(--ink-soft);max-width:38rem}
-.cta-row{margin-top:2.2rem;display:flex;flex-direction:column;gap:.9rem;align-items:flex-start}
+.hero .lede{font-size:clamp(1.1rem,1rem + .7vw,1.32rem);color:var(--ink-soft);max-width:36rem;line-height:1.55}
+.cta-row{margin-top:2.4rem;display:flex;flex-direction:column;gap:1rem;align-items:flex-start}
 .btn{
-  display:inline-block;
-  font-family:var(--mono);
-  font-size:.95rem;
-  font-weight:600;
-  letter-spacing:.02em;
-  text-decoration:none;
-  color:var(--paper);
-  background:var(--ledger);
-  padding:1rem 1.6rem;
-  border:2px solid var(--ledger-deep);
-  box-shadow:4px 4px 0 var(--ink);
-  transition:transform .12s ease,box-shadow .12s ease;
+  display:inline-block;font-family:var(--mono);
+  font-size:clamp(.88rem,.8rem + .3vw,.98rem);font-weight:600;letter-spacing:.03em;
+  text-decoration:none;color:var(--paper);background:var(--ledger);
+  padding:1.05rem 1.7rem;border:2px solid var(--ledger-deep);border-radius:2px;
+  box-shadow:5px 5px 0 var(--ink);
+  transition:transform .13s ease,box-shadow .13s ease,background .13s ease;
 }
-.btn:hover{transform:translate(-1px,-1px);box-shadow:6px 6px 0 var(--ink)}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--ink);background:var(--ledger-deep)}
 .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
-.cta-alt{font-size:1.05rem;color:var(--ink-soft)}
-.cta-alt a{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--ledger)}
+.cta-alt{font-size:1.02rem;color:var(--ink-soft)}
+.cta-alt a{color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--ledger);text-decoration-thickness:1.5px}
 .cta-alt a:hover{color:var(--ledger)}
+.hero-foot{
+  margin-top:2.6rem;padding-top:1.1rem;border-top:1px solid var(--rule);
+  display:flex;gap:2rem;flex-wrap:wrap;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
+}
+.hero-foot b{color:var(--ledger);font-weight:600}
 
-/* ── ledger list (problem section) ──────────── */
-.ledger-list{list-style:none;margin-top:1.5rem;border-top:1px solid var(--rule)}
+/* ── ledger list ──────────────────────────── */
+.ledger-list{list-style:none;margin-top:1.7rem;border-top:1px solid var(--rule)}
 .ledger-list li{
-  display:grid;grid-template-columns:2.6rem 1fr;gap:.6rem;
-  padding:1.1rem 0;border-bottom:1px solid var(--rule);
+  display:grid;grid-template-columns:3.2rem 1fr;gap:.8rem;
+  padding:1.25rem 0;border-bottom:1px solid var(--rule);align-items:start;
 }
-.ledger-list .n{font-family:var(--mono);font-size:.8rem;font-weight:600;color:var(--ledger);padding-top:.3rem}
+.ledger-list .n{
+  font-family:var(--display);font-size:1.5rem;font-weight:500;font-style:italic;
+  color:var(--ledger);line-height:1.1;
+}
+.ledger-list li:last-child{border-bottom:3px double var(--rule-dark)}
 
-/* ── services ───────────────────────────────── */
-.svc{display:grid;gap:0;margin-top:1.5rem;border-top:1px solid var(--rule)}
-.svc-item{padding:1.3rem 0;border-bottom:1px solid var(--rule)}
-.svc-item h3{font-size:1.2rem;font-weight:600;margin-bottom:.3rem}
-.svc-item h3 .label{margin-left:.5rem;letter-spacing:.1em}
-.svc-item p{color:var(--ink-soft);font-size:1.05rem}
+/* ── services ─────────────────────────────── */
+.svc{margin-top:1.7rem;border-top:1px solid var(--rule)}
+.svc-item{
+  padding:1.4rem 0;border-bottom:1px solid var(--rule);
+  display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:baseline;
+}
+.svc-item .tick{font-family:var(--mono);font-size:.7rem;font-weight:600;color:var(--ledger);letter-spacing:.1em}
+.svc-item h3{font-family:var(--display);font-size:1.28rem;font-weight:600;margin-bottom:.3rem}
+.svc-item p{color:var(--ink-soft);font-size:1.02rem}
 
-/* ── sample report card ─────────────────────── */
+/* ── sample report card ───────────────────── */
 .report{
-  background:#fff;
-  border:1px solid var(--ink);
-  box-shadow:6px 6px 0 var(--paper-deep),6px 6px 0 1px var(--rule);
-  padding:1.6rem 1.5rem;
-  margin-top:1.75rem;
-  font-family:var(--mono);
-  font-size:.85rem;
-  max-width:30rem;
+  position:relative;background:var(--card);
+  border:1px solid var(--ink);border-radius:2px;
+  box-shadow:0 1px 0 var(--rule),8px 10px 0 rgba(25,23,18,.07),8px 10px 0 1px var(--rule);
+  padding:clamp(1.4rem,4.5vw,2rem) clamp(1.2rem,4vw,1.8rem);
+  margin-top:2.2rem;font-family:var(--mono);font-size:.85rem;max-width:31rem;
 }
-.report-head{display:flex;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:.6rem;margin-bottom:.9rem;font-weight:600;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase}
-.report-row{display:flex;justify-content:space-between;gap:1rem;padding:.42rem 0;border-bottom:1px dotted var(--rule)}
-.report-row.total{border-bottom:none;border-top:2px solid var(--ink);margin-top:.5rem;padding-top:.7rem;font-weight:600}
-.report-row .v{color:var(--ledger);font-weight:600}
-.report-note{font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:.95rem;margin-top:1rem}
+.report::before{
+  content:"SAMPLE FORMAT";position:absolute;top:1rem;right:-.7rem;
+  font-size:.6rem;font-weight:600;letter-spacing:.14em;color:var(--ledger);
+  border:1.5px solid var(--ledger);padding:.3rem .55rem;border-radius:2px;
+  transform:rotate(4deg);background:var(--card);opacity:.9;
+}
+.report-head{display:flex;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:.65rem;margin-bottom:1rem;font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.report-row{display:flex;justify-content:space-between;gap:1rem;padding:.5rem 0;border-bottom:1px dotted var(--rule)}
+.report-row .v{color:var(--ledger);font-weight:600;white-space:nowrap}
+.report-row.total{border-bottom:none;border-top:2px solid var(--ink);margin-top:.6rem;padding-top:.8rem;font-weight:600;font-size:.95rem}
+.report-note{font-family:var(--serif);font-style:italic;color:var(--ink-soft);font-size:.98rem;margin-top:1.1rem;line-height:1.5}
 
-/* ── timeline ───────────────────────────────── */
-.timeline{list-style:none;margin-top:1.6rem;position:relative;padding-left:1.6rem}
-.timeline:before{content:"";position:absolute;left:.35rem;top:.5rem;bottom:.5rem;width:2px;background:var(--rule)}
-.timeline li{position:relative;padding:0 0 1.7rem}
+/* ── timeline ─────────────────────────────── */
+.timeline{list-style:none;margin-top:1.9rem;position:relative;padding-left:1.9rem}
+.timeline:before{content:"";position:absolute;left:.4rem;top:.6rem;bottom:.6rem;width:2px;background:var(--rule)}
+.timeline li{position:relative;padding:0 0 2rem}
 .timeline li:last-child{padding-bottom:0}
 .timeline li:before{
-  content:"";position:absolute;left:-1.6rem;top:.42rem;
-  width:.75rem;height:.75rem;background:var(--paper);
-  border:2px solid var(--ledger);border-radius:50%;
+  content:"";position:absolute;left:-1.9rem;top:.4rem;width:.85rem;height:.85rem;
+  background:var(--paper);border:2.5px solid var(--ledger);border-radius:50%;
 }
-.timeline .label{display:block;margin-bottom:.2rem}
-.timeline h3{font-size:1.15rem;font-weight:600;margin-bottom:.25rem}
-.timeline p{color:var(--ink-soft);font-size:1.02rem}
+.timeline .label{margin-bottom:.35rem}
+.timeline .label::after{display:none}
+.timeline h3{font-family:var(--display);font-size:1.22rem;font-weight:600;margin-bottom:.3rem}
+.timeline p{color:var(--ink-soft);font-size:1.02rem;max-width:34rem}
 
-/* ── pricing ────────────────────────────────── */
-.price-block{border:1px solid var(--ink);margin-top:1.6rem}
-.price-tier{padding:1.6rem 1.4rem}
+/* ── pricing ──────────────────────────────── */
+.price-block{
+  border:1px solid var(--ink);border-radius:2px;margin-top:1.9rem;background:var(--card);
+  box-shadow:8px 10px 0 rgba(25,23,18,.07),8px 10px 0 1px var(--rule);
+}
+.price-tier{padding:clamp(1.5rem,4.5vw,2rem) clamp(1.3rem,4vw,1.8rem)}
 .price-tier+.price-tier{border-top:1px solid var(--rule)}
-.price-tier .amt{font-family:var(--mono);font-size:2rem;font-weight:600;color:var(--ledger)}
-.price-tier .amt small{font-size:.9rem;color:var(--ink-soft);font-weight:400}
-.price-tier h3{font-size:1.15rem;font-weight:600;margin:.35rem 0 .4rem}
+.price-tier .amt{
+  font-family:var(--display);font-size:clamp(2rem,1.4rem + 3vw,2.7rem);
+  font-weight:600;color:var(--ledger);letter-spacing:-.02em;
+}
+.price-tier .amt small{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft);font-weight:400;letter-spacing:.06em;text-transform:uppercase}
+.price-tier h3{font-family:var(--display);font-size:1.25rem;font-weight:600;margin:.45rem 0 .5rem}
 .price-tier p{color:var(--ink-soft);font-size:1.02rem}
 .guarantee{
-  background:var(--paper-deep);
-  border-left:3px solid var(--ledger);
-  padding:1.1rem 1.3rem;
-  margin-top:1.5rem;
-  font-style:italic;
+  background:var(--ledger-tint);border-left:3px solid var(--ledger);border-radius:0 2px 2px 0;
+  padding:1.2rem 1.4rem;margin-top:1.7rem;font-style:italic;font-size:1.05rem;
 }
 
-/* ── faq ────────────────────────────────────── */
-.faq{margin-top:1.4rem;border-top:1px solid var(--rule)}
-.faq div{padding:1.2rem 0;border-bottom:1px solid var(--rule)}
-.faq dt{font-weight:600;font-size:1.1rem;margin-bottom:.35rem;font-style:italic}
-.faq dd{color:var(--ink-soft);font-size:1.05rem}
+/* ── faq ──────────────────────────────────── */
+.faq{margin-top:1.6rem;border-top:1px solid var(--rule)}
+.faq div{padding:1.35rem 0;border-bottom:1px solid var(--rule)}
+.faq dt{font-family:var(--display);font-weight:600;font-size:1.14rem;margin-bottom:.4rem;font-style:italic}
+.faq dd{color:var(--ink-soft);font-size:1.03rem}
 
-/* ── founder note ───────────────────────────── */
+/* ── founder note ─────────────────────────── */
 .note{
-  background:#fff;
-  border:1px solid var(--rule);
-  border-top:3px double var(--rule-dark);
-  padding:2rem 1.6rem;
-  margin-top:1.6rem;
+  background:var(--card);border:1px solid var(--rule);border-top:3px double var(--rule-dark);
+  border-radius:0 0 2px 2px;padding:clamp(1.7rem,5vw,2.4rem) clamp(1.4rem,4.5vw,2rem);
+  margin-top:1.9rem;box-shadow:0 2px 0 var(--rule);
 }
-.note p{font-size:1.08rem}
-.note .sig{font-family:var(--serif);font-style:italic;font-size:1.35rem;margin-top:1.3rem}
-.note .sig-role{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:.15rem}
+.note p{font-size:1.07rem}
+.note .sig{font-family:var(--display);font-style:italic;font-size:1.7rem;margin-top:1.5rem;color:var(--ink)}
+.note .sig-role{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:.2rem}
 
-/* ── final cta ──────────────────────────────── */
-.final{background:var(--ink);color:var(--paper);padding:4rem 0}
+/* ── final cta ────────────────────────────── */
+.final{background:var(--ink);color:var(--paper);padding:clamp(4rem,10vw,5.5rem) 0;position:relative}
 .final .label{color:#8fd3ae}
+.final .label::after{background:#3a372f}
 .final h2{color:var(--paper)}
-.final p{color:#c9c4b8}
-.final .cta-alt a{color:var(--paper)}
+.final .cta-alt{color:#b9b3a4}
+.final .cta-alt a{color:var(--paper);text-decoration-color:#8fd3ae}
+.final .btn{box-shadow:5px 5px 0 rgba(143,211,174,.35)}
+.final .btn:hover{box-shadow:8px 8px 0 rgba(143,211,174,.35)}
 
-/* ── footer ─────────────────────────────────── */
-footer{padding:2.2rem 0 7rem;font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);letter-spacing:.03em}
-footer p+p{margin-top:.4rem}
+/* ── footer ───────────────────────────────── */
+footer{padding:2.4rem 0 7.5rem;font-family:var(--mono);font-size:.7rem;color:var(--ink-soft);letter-spacing:.04em;line-height:2}
 footer a{color:var(--ink-soft)}
 
-/* ── sticky mobile bar ──────────────────────── */
+/* ── sticky mobile bar ────────────────────── */
 .sticky-cta{
-  position:fixed;left:0;right:0;bottom:0;z-index:50;
-  background:var(--paper);
+  position:fixed;left:0;right:0;bottom:0;z-index:100;
+  background:color-mix(in srgb,var(--paper) 92%,transparent);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
   border-top:2px solid var(--ink);
-  padding:.7rem 1rem calc(.7rem + env(safe-area-inset-bottom));
+  padding:.75rem var(--pad) calc(.75rem + env(safe-area-inset-bottom));
   display:flex;justify-content:center;
-  transform:translateY(110%);
-  transition:transform .25s ease;
+  transform:translateY(110%);transition:transform .28s ease;
 }
 .sticky-cta.on{transform:translateY(0)}
-.sticky-cta .btn{width:100%;max-width:24rem;text-align:center;padding:.85rem 1rem;box-shadow:3px 3px 0 var(--ink)}
+.sticky-cta .btn{width:100%;max-width:24rem;text-align:center;padding:.95rem 1rem;box-shadow:3px 3px 0 var(--ink)}
 @media(min-width:800px){.sticky-cta{display:none}}
 
-/* ── reveal on load ─────────────────────────── */
+/* ── reveals ──────────────────────────────── */
 @media(prefers-reduced-motion:no-preference){
-  .hero>*{opacity:0;transform:translateY(12px);animation:up .7s ease forwards}
-  .hero>*:nth-child(2){animation-delay:.08s}
-  .hero>*:nth-child(3){animation-delay:.16s}
-  .hero>*:nth-child(4){animation-delay:.26s}
+  .hero>*{opacity:0;transform:translateY(14px);animation:up .75s cubic-bezier(.2,.7,.3,1) forwards}
+  .hero>*:nth-child(2){animation-delay:.08s}.hero>*:nth-child(3){animation-delay:.16s}
+  .hero>*:nth-child(4){animation-delay:.26s}.hero>*:nth-child(5){animation-delay:.36s}
   @keyframes up{to{opacity:1;transform:none}}
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+  .rv.in{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -228,7 +254,7 @@ footer a{color:var(--ink-soft)}
     <div class="wordmark">Agency<span>Retain</span></div>
     <div class="mast-right">
       <div class="tagline">Operators, not software</div>
-      <a class="tool-link" href="calculator.html">Free: leakage calculator</a>
+      <a class="tool-link" href="calculator.html">Free leakage calculator</a>
     </div>
   </div>
 </header>
@@ -244,49 +270,52 @@ footer a{color:var(--ink-soft)}
     <a class="btn" href="#pricing" data-todo="stripe-link">Start the $500 Sprint&nbsp;→</a>
     <p class="cta-alt">Not sure yet? <a href="#pricing" data-todo="calcom-link">Book a 15-minute fit call first</a> — no deck, no demo.</p>
   </div>
+  <div class="hero-foot">
+    <span><b>$500</b>&nbsp;flat entry — priced on the page</span>
+    <span><b>14 days</b>&nbsp;to a dollars report</span>
+    <span><b>No</b>&nbsp;long-term contract</span>
+  </div>
 </section>
 
-<div class="wrap"><hr class="rule-thin"></div>
-
 <!-- ═══ PROBLEM ═══ -->
-<section class="wrap">
+<section class="wrap rv">
   <span class="label">The math</span>
   <h2>One point of retention is real money. Most agencies leak two or three.</h2>
   <ul class="ledger-list">
-    <li><span class="n">01</span><span>Acquiring a policyholder costs roughly <strong>5× keeping one</strong> — and the leakage is mostly quotes and renewals nobody touched on time.</span></li>
-    <li><span class="n">02</span><span>Renewal outreach that starts 30 days out is too late. The shopping already happened. <strong>The lift lives at 90 days.</strong></span></li>
-    <li><span class="n">03</span><span>Quotes without a follow-up sequence quietly buy from whoever calls in week three.</span></li>
-    <li><span class="n">04</span><span>And the tool you bought to fix this? Industry data says most agencies use a fraction of it. <strong>The gap isn't software. It's operation.</strong></span></li>
+    <li><span class="n">i.</span><span>Acquiring a policyholder costs roughly <strong>5× keeping one</strong> — and the leakage is mostly quotes and renewals nobody touched on time.</span></li>
+    <li><span class="n">ii.</span><span>Renewal outreach that starts 30 days out is too late. The shopping already happened. <strong>The lift lives at 90 days.</strong></span></li>
+    <li><span class="n">iii.</span><span>Quotes without a follow-up sequence quietly buy from whoever calls in week three.</span></li>
+    <li><span class="n">iv.</span><span>And the tool you bought to fix this? Industry data says most agencies use a fraction of it. <strong>The gap isn't software. It's operation.</strong></span></li>
   </ul>
-  <p style="margin-top:1.3rem">Want this math on your own book size? <a href="calculator.html" style="color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--ledger)">Run the free leakage calculator</a> — 30 seconds, no email gate.</p>
+  <p style="margin-top:1.5rem">Want this math on your own book size? <a href="calculator.html" style="color:var(--ink);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--ledger);text-decoration-thickness:1.5px">Run the free leakage calculator</a> — 30 seconds, no email gate.</p>
 </section>
 
 <!-- ═══ WHAT WE DO ═══ -->
-<section class="wrap">
+<section class="wrap rv">
   <span class="label">What we do</span>
   <h2>Done-for-you revenue recovery</h2>
   <div class="svc">
-    <div class="svc-item">
+    <div class="svc-item"><span class="tick">01</span><div>
       <h3>Quote follow-up</h3>
       <p>Every quote gets a sequence. No more "the hot ones get chased, the rest go quiet."</p>
-    </div>
-    <div class="svc-item">
+    </div></div>
+    <div class="svc-item"><span class="tick">02</span><div>
       <h3>Renewal engine</h3>
       <p>Touchpoints from 90 days out, segmented by line of business.</p>
-    </div>
-    <div class="svc-item">
+    </div></div>
+    <div class="svc-item"><span class="tick">03</span><div>
       <h3>Cross-sell</h3>
       <p>Coverage-gap campaigns keyed to what each client already holds. Email-only, by design.</p>
-    </div>
-    <div class="svc-item">
+    </div></div>
+    <div class="svc-item"><span class="tick">04</span><div>
       <h3>Proof</h3>
       <p>A monthly report in written premium and renewals retained. If we can't show lift, you shouldn't pay us.</p>
-    </div>
+    </div></div>
   </div>
-  <p style="margin-top:1.4rem">We work inside your existing stack — Levitate, Fuse, AgencyZoom, Better Agency, your AMS — or install a lean one. <strong>You keep your tools. We make them produce.</strong></p>
+  <p style="margin-top:1.5rem">We work inside your existing stack — Levitate, Fuse, AgencyZoom, Better Agency, your AMS — or install a lean one. <strong>You keep your tools. We make them produce.</strong></p>
 
   <div class="report" aria-label="Sample report format">
-    <div class="report-head"><span>Day-14 Sprint Report</span><span>format</span></div>
+    <div class="report-head"><span>Day-14 Sprint Report</span><span>AgencyRetain</span></div>
     <div class="report-row"><span>Segment · renewals 45–90 days out</span><span class="v">___ policies</span></div>
     <div class="report-row"><span>Policyholders engaged</span><span class="v">___</span></div>
     <div class="report-row"><span>Review calls booked</span><span class="v">___</span></div>
@@ -297,7 +326,7 @@ footer a{color:var(--ink-soft)}
 </section>
 
 <!-- ═══ HOW THE SPRINT WORKS ═══ -->
-<section class="wrap">
+<section class="wrap rv">
   <span class="label">How the sprint works</span>
   <h2>Fourteen days, one segment of your book, no homework for your staff.</h2>
   <ol class="timeline">
@@ -325,15 +354,15 @@ footer a{color:var(--ink-soft)}
 </section>
 
 <!-- ═══ PRICING ═══ -->
-<section class="wrap" id="pricing">
+<section class="wrap rv" id="pricing">
   <span class="label">Pricing — yes, actual numbers</span>
   <h2>Start small. Scale on proof.</h2>
   <div class="price-block">
     <div class="price-tier">
-      <div class="amt">$500 <small>flat, once</small></div>
+      <div class="amt">$500 <small>flat · once</small></div>
       <h3>Renewal Recovery Sprint</h3>
-      <p>One segment of your book, one campaign, 14 days. You see results before any retainer conversation happens.</p>
-      <div class="cta-row" style="margin-top:1.2rem">
+      <p>One segment of your book, one campaign, 14 days. You see the results before any retainer conversation happens.</p>
+      <div class="cta-row" style="margin-top:1.3rem">
         <!-- data-todo: replace href with Stripe payment link -->
         <a class="btn" href="#" data-todo="stripe-link">Start the $500 Sprint&nbsp;→</a>
       </div>
@@ -345,11 +374,11 @@ footer a{color:var(--ink-soft)}
     </div>
   </div>
   <p class="guarantee">If the sprint doesn't produce measurable renewals or appointments, it doesn't convert to a retainer. That's the whole point of starting there.</p>
-  <p class="cta-alt" style="margin-top:1.2rem">Prefer to talk first? <a href="#" data-todo="calcom-link">Book a 15-minute fit call</a>.</p>
+  <p class="cta-alt" style="margin-top:1.3rem">Prefer to talk first? <a href="#" data-todo="calcom-link">Book a 15-minute fit call</a>.</p>
 </section>
 
 <!-- ═══ COMPLIANCE ═══ -->
-<section class="wrap">
+<section class="wrap rv">
   <span class="label">Compliance</span>
   <h2>Compliance-safe by design</h2>
   <p>Email-first campaigns. SMS only for informational notices with documented consent. Cross-sell never by text. State-aware sending windows — yes, including Florida's. Real-time opt-out with a full audit log.</p>
@@ -357,7 +386,7 @@ footer a{color:var(--ink-soft)}
 </section>
 
 <!-- ═══ FAQ ═══ -->
-<section class="wrap">
+<section class="wrap rv">
   <span class="label">Fair questions</span>
   <h2>What agency owners ask us</h2>
   <dl class="faq">
@@ -381,7 +410,7 @@ footer a{color:var(--ink-soft)}
 </section>
 
 <!-- ═══ FOUNDER NOTE ═══ -->
-<section class="wrap">
+<section class="wrap rv">
   <span class="label">Who's behind this</span>
   <h2>A note from the operator</h2>
   <div class="note">
@@ -418,9 +447,10 @@ footer a{color:var(--ink-soft)}
 </div>
 
 <script>
-// show sticky bar once the hero scrolls out of view (mobile only via CSS)
 const hero=document.getElementById('top'),bar=document.getElementById('stickyCta');
 new IntersectionObserver(([e])=>{bar.classList.toggle('on',!e.isIntersecting)},{threshold:0}).observe(hero);
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 </script>
 </body>
 </html>
