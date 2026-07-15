@@ -16,7 +16,7 @@
   --red:#9c3a2e;
   --display:'Fraunces',Georgia,serif;
   --serif:'Newsreader',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
-  --pad:clamp(1.4rem,5vw,2rem);
+  --pad:clamp(1.55rem,6vw,2.2rem);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--paper);background-image:radial-gradient(ellipse 120% 80% at 50% -10%, #fffbf2 0%, var(--paper) 55%);color:var(--ink);font-family:var(--serif);font-size:clamp(1.04rem,1rem + .25vw,1.13rem);line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -33,7 +33,7 @@ header{padding:1.4rem 0}
 .tagline{font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
 @media(max-width:480px){.tagline{display:none}}
 
-.hero{padding:clamp(2.6rem,7vw,3.6rem) 0 clamp(1.6rem,4vw,2.2rem)}
+.hero{padding-top:clamp(2.6rem,7vw,3.6rem);padding-bottom:clamp(1.6rem,4vw,2.2rem)}
 h1{font-family:var(--display);font-size:clamp(2rem,1.2rem + 4.5vw,3rem);font-weight:500;line-height:1.1;letter-spacing:-.02em;margin:.9rem 0 1rem;text-wrap:balance}
 h1 em{font-style:italic;color:var(--ledger)}
 .lede{color:var(--ink-soft);max-width:36rem;font-size:clamp(1.05rem,1rem + .4vw,1.2rem)}
