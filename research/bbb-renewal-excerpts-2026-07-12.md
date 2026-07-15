@@ -117,7 +117,7 @@ URL: bbb.org/us/ma/charlestown/profile/insurance-agency/flynn-insurance-agency-i
 
 ---
 
-# Thematic tally (40 excerpts)
+# Thematic tally (42 excerpts — corrected count per 2026-07-14 audit)
 
 | Theme | Count | Notes |
 |---|---|---|

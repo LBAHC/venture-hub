@@ -33,9 +33,9 @@ The fix isn't software. Most agencies already own a tool that can schedule renew
 ## Post 3 — the best review we found (real quote, real agency, credited)
 Found this in a five-star Google review of an Oklahoma City independent agency while doing research:
 
-"Phu had reached to me last year asking to put together a quote for me. At that time, it wasn't much of a cost difference… but he asked if he could reach out after I received my renewal notices. He called again, and the new quotes he put together won the business."
+"Phu had reached to me last year asking to put together a quote for me. At that time, it wasn't much of a cost difference… but he asked if he could reach out after I received my renewal notices. He called again, and the new quotes he put together would save me a couple thousand dollars as my current insurance was going to have a large rate hike at renewal."
 
-Read what happened there. The producer lost the first quote — then diarized the renewal date, called back on it, and won the account.
+Read what happened there. The producer didn't win the first quote — so he diarized the renewal date, called back on it, and was standing there with better numbers at the exact moment the incumbent's rate hike landed.
 
 To the customer this reads like magic. Operationally, it's a calendar entry.
 
