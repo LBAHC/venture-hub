@@ -34,3 +34,4 @@ Authority (CLAUDE.md #3): infra ≤$400/mo pre-approved; anything above, or any 
 ## Spend log (append actuals; mirror the spend column in metrics.md)
 | date | item | amount | note |
 |---|---|---|---|
+| 2026-07-14 | Domains (Porkbun) | ~$45/yr | agencyretain.com + 3 sending domains purchased by Luke (confirm exact total + whether defensive .io/.com variants included) |
