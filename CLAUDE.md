@@ -3,11 +3,15 @@
 ## Mission
 Reach $500/day net revenue by Day 30, $1,000/day by Day 60, via a done-for-you revenue-recovery service for independent P&C insurance agencies. Luke is facilitator only (payments, identity verification, closing calls if async closing underperforms). Claude plans and executes.
 
-## Current State
-- Day 0 complete: niche locked, offer repositioned (see /docs/day0-brief.md + /docs/research-addendum.md)
+## Current State (as of 2026-07-15)
+- Brand: **AgencyRetain**. Domains purchased at Porkbun (agencyretain.com + agencyretainhq/getagencyretain/tryagencyretain .com). Luke filing Alaska LLC (~$250, same-day online).
 - Offer: $500 Renewal Recovery Sprint → $1,000–1,500/mo operator retainer
-- Day 1 (2026-07-12): brand locked = **AgencyRetain**; research done (domains, infra pricing, competitor audit — see /research); landing page v1 built (/site/index.html, needs Stripe + Cal.com links + address); infra picks: Porkbun domains, Primeforge inboxes, Smartlead Base
-- Pending: Luke purchases (domains, inboxes, Smartlead, Stripe, Cal.com), DNS auth, hosting, list build, launch
+- Site: landing v3 live in /site (editorial document grid, rebuilt per /research/design-craft-audit-2026-07-15.md); calculator + renewal-study pages built but still on v2 style (alignment pending). Founder note approved. Stripe/Cal.com links + address are data-todo placeholders.
+- Flagship proof asset: 5,408-review renewal study — fabrication-audited, styled page done (/site/renewal-study.html). Corpus in /data (gitignored); Apify free credit exhausted until August.
+- Fulfillment: sprint templates + tested book_analysis.py in /fulfillment; lean stack (no GHL) per decision log. Lead pipeline + Firecrawl enrichment tested in /leads.
+- Channels: email (blocked on Primeforge/Smartlead signups) · LinkedIn light wk1 (playbook + posts queued in /outreach) · mail held as Day-14 lever · podcasts shelved.
+- **Next big build (Luke-directed): comprehensive landing variant B + A/B split test; GA4 + Clarity instrumentation on both (IDs pending from Luke). Update privacy page's "cookie-free" line when GA4 ships.**
+- Waiting on Luke: LLC/entity name + address, Primeforge, Smartlead, Stripe payment links, Cal.com, GA4 + Clarity IDs.
 
 ## Operating Rules
 1. **Data over hypotheticals.** Every kill/scale decision cites a metric. Log decisions in /docs/decision-log.md with date, data, and rationale.
